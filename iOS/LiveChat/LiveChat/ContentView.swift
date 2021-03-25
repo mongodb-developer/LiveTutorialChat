@@ -20,13 +20,14 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle(username, displayMode: .inline)
-            .navigationBarItems(trailing: app.currentUser != nil ? Button(action: logout) { Text("Logout") } : nil)
-        }
+            .navigationBarItems(trailing: app.currentUser != nil ? Button(action: logout) { Text("Logout") } : nil) }
      }
     
     func logout() {
         app.currentUser?.logOut() { _ in
-            DispatchQueue.main.async { username = "" }
+            DispatchQueue.main.async {
+                username = ""
+            }
         }
     }
 }

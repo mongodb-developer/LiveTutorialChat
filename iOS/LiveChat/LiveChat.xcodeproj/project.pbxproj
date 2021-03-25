@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A1858FA260BC06C0063C071 /* ChatRoomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1858F9260BC06C0063C071 /* ChatRoomsView.swift */; };
+		0A1858FC260CDA560063C071 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1858FB260CDA560063C071 /* ChatMessage.swift */; };
+		0A1858FE260CDBAE0063C071 /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1858FD260CDBAE0063C071 /* ChatsView.swift */; };
 		0A2314FF260B997700CFE607 /* LiveChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2314FE260B997700CFE607 /* LiveChatApp.swift */; };
 		0A231501260B997700CFE607 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A231500260B997700CFE607 /* ContentView.swift */; };
 		0A231503260B997B00CFE607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A231502260B997B00CFE607 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		0A1858F9260BC06C0063C071 /* ChatRoomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsView.swift; sourceTree = "<group>"; };
+		0A1858FB260CDA560063C071 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		0A1858FD260CDBAE0063C071 /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
 		0A2314FB260B997700CFE607 /* LiveChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A2314FE260B997700CFE607 /* LiveChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatApp.swift; sourceTree = "<group>"; };
 		0A231500260B997700CFE607 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +46,7 @@
 		0A2314F2260B997700CFE607 = {
 			isa = PBXGroup;
 			children = (
+				0A2314FE260B997700CFE607 /* LiveChatApp.swift */,
 				0A2314FD260B997700CFE607 /* LiveChat */,
 				0A2314FC260B997700CFE607 /* Products */,
 			);
@@ -61,7 +66,6 @@
 				0A231500260B997700CFE607 /* ContentView.swift */,
 				0A231511260BAC7D00CFE607 /* Models */,
 				0A231510260BAC7000CFE607 /* Views */,
-				0A2314FE260B997700CFE607 /* LiveChatApp.swift */,
 				0A231502260B997B00CFE607 /* Assets.xcassets */,
 				0A231507260B997B00CFE607 /* Info.plist */,
 				0A231504260B997B00CFE607 /* Preview Content */,
@@ -82,6 +86,7 @@
 			children = (
 				0A231512260BADAA00CFE607 /* LoginView.swift */,
 				0A1858F9260BC06C0063C071 /* ChatRoomsView.swift */,
+				0A1858FD260CDBAE0063C071 /* ChatsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 		0A231511260BAC7D00CFE607 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0A1858FB260CDA560063C071 /* ChatMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -168,9 +174,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A1858FE260CDBAE0063C071 /* ChatsView.swift in Sources */,
 				0A231513260BADAA00CFE607 /* LoginView.swift in Sources */,
 				0A1858FA260BC06C0063C071 /* ChatRoomsView.swift in Sources */,
 				0A231501260B997700CFE607 /* ContentView.swift in Sources */,
+				0A1858FC260CDA560063C071 /* ChatMessage.swift in Sources */,
 				0A2314FF260B997700CFE607 /* LiveChatApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

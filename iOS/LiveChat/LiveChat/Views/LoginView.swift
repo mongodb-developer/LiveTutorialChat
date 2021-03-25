@@ -23,15 +23,15 @@ struct LoginView: View {
             Spacer()
             TextField("email address", text: $email)
             SecureField("password", text: $password)
-            Button(action: userAction) {
-                Text(newUser ? "Register new user" : "Log in")
-            }
             Button(action: { newUser.toggle() }) {
                 HStack {
                     Image(systemName: newUser ? "checkmark.square" : "square")
                     Text("Register new user")
                     Spacer()
                 }
+            }
+            Button(action: userAction) {
+                Text(newUser ? "Register new user" : "Log in")
             }
             Spacer()
         }
@@ -54,18 +54,6 @@ struct LoginView: View {
                 login()
             }
         }
-//            .receive(on: DispatchQueue.main)
-//            .sink(receiveCompletion: {
-//                switch $0 {
-//                case .finished:
-//                    break
-//                case .failure(let error):
-//                    print("\(error.localizedDescription)")
-//                }
-//            }, receiveValue: {
-//                login()
-//            })
-//            .store(in: &cancellables)
     }
     
     private func login() {
