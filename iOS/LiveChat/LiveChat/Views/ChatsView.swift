@@ -33,7 +33,7 @@ struct ChatsView: View {
                 Button(action: send) { Image(systemName: "paperplane.fill") }
             }
         }
-        .navigationBarTitle("\(room) messages")
+        .navigationBarTitle("\(room) messages", displayMode: .inline)
         .padding()
     }
     
@@ -45,6 +45,8 @@ struct ChatsView: View {
 
 struct ChatsView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatsView(username: "billy@fish.com", room: "test room")
+        NavigationView {
+            ChatsView(username: "billy@fish.com", room: "Test room")
+        }
     }
 }

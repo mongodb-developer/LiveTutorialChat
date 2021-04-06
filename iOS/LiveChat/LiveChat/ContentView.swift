@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            Group {
                 if app.currentUser == nil {
                     LoginView(username: $username)
                 } else {
