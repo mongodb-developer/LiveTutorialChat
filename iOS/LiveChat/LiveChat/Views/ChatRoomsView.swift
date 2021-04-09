@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ChatRoomsView: View {
     let username: String
-    let rooms = ["Atlas", "Realm", "Charts", "Search", "Server"]
     var preview = false
+    
+    let rooms = ["Atlas", "Realm", "Charts", "Search", "Server"]
     
     var body: some View {
         List {

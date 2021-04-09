@@ -7,7 +7,6 @@
 
 import SwiftUI
 import RealmSwift
-import Combine
 
 struct LoginView: View {
     @Binding var username: String
@@ -15,8 +14,6 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var newUser = false
-    
-    @State private var cancellables = Set<AnyCancellable>()
     
     var body: some View {
         VStack(spacing: 16) {
@@ -38,7 +35,7 @@ struct LoginView: View {
         .padding()
     }
     
-    func userAction() -> Void {
+    func userAction() {
         if newUser {
             signup()
         } else {
