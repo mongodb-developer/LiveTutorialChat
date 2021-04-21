@@ -32,9 +32,15 @@ class CounterModel() : ViewModel() {
         realm?.close()
     }
 
-
-
+    /*
     init {
+        connToRealmApp()
+    }
+     */
+
+
+
+    fun connToRealmApp (enteredEmail: String, enteredPassword : String) {
         val appID = "quickstart2-xjrwi" // TODO: replace this with your App ID
 
         // 1. connect to the MongoDB Realm app backend
@@ -42,6 +48,8 @@ class CounterModel() : ViewModel() {
             AppConfiguration.Builder(appID)
                 .build()
         )
+
+        Log.v("QUICKSTART", "Email: $enteredEmail - Password: $enteredPassword")
 
         // 2. authenticate a user
         app.loginAsync(Credentials.anonymous()) {

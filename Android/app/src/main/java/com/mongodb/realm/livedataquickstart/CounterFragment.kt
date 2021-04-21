@@ -14,6 +14,7 @@ import com.mongodb.realm.livedataquickstart.databinding.CounterFragmentBinding
 import com.mongodb.realm.livedataquickstart.model.CounterModel
 import kotlinx.android.synthetic.main.counter_fragment.view.*
 import com.mongodb.realm.livedataquickstart.BR.counterModel
+import android.net.Uri
 
 
 /**
@@ -43,5 +44,23 @@ class CounterFragment : Fragment() {
         */
 
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        arguments?.let {
+            val args = CounterFragmentArgs.fromBundle(it)
+ //           this.binding.getCounterModel()!!.enteredEmail = args.email
+ //           this.binding.getCounterModel()!!.enteredPassword = args.password
+
+            this.binding.getCounterModel()!!.connToRealmApp(args.email, args.password)
+
+        }
+    }
+
+    interface OnFragmentInteractionListener {
+        //TODO: Update argument type and name
+        fun OnFragmentInteractionListener(uri: Uri)
     }
 }

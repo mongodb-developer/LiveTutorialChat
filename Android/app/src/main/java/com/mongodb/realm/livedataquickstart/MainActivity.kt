@@ -15,10 +15,11 @@ import io.realm.mongodb.Credentials
 import io.realm.mongodb.User
 import io.realm.mongodb.sync.SyncConfiguration
 import com.mongodb.realm.livedataquickstart.model.Counter
+import android.net.Uri
 
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
     lateinit var realm: Realm
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +44,4 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-
 }
