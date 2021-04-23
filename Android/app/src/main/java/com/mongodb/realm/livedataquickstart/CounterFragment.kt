@@ -13,7 +13,6 @@ import com.mongodb.realm.livedataquickstart.R
 import com.mongodb.realm.livedataquickstart.databinding.CounterFragmentBinding
 import com.mongodb.realm.livedataquickstart.model.CounterModel
 import kotlinx.android.synthetic.main.counter_fragment.view.*
-import com.mongodb.realm.livedataquickstart.BR.counterModel
 import android.net.Uri
 
 
@@ -32,7 +31,7 @@ class CounterFragment : Fragment() {
 
         binding = CounterFragmentBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
-            counterModel = model
+            myCounterModel = model
         }
 
         /*
@@ -54,7 +53,7 @@ class CounterFragment : Fragment() {
  //           this.binding.getCounterModel()!!.enteredEmail = args.email
  //           this.binding.getCounterModel()!!.enteredPassword = args.password
 
-            this.binding.getCounterModel()!!.connToRealmApp(args.email, args.password)
+            this.binding.getMyCounterModel()!!.connToRealmApp(args.email, args.password)
 
         }
     }

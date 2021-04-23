@@ -10,26 +10,44 @@ import io.realm.mongodb.AppConfiguration
 import io.realm.mongodb.Credentials
 import io.realm.mongodb.User
 import io.realm.mongodb.sync.SyncConfiguration
-
+import androidx.lifecycle.MutableLiveData
 
 class CounterModel() : ViewModel() {
+    private val appID = "quickstart2-xjrwi"
+    lateinit var app : App
     private var realm: Realm? = null
+    private var chatUser = ""
     private val _counter: LiveRealmObject<Counter> = LiveRealmObject(null)
     val counter: LiveData<Counter>
-        get() = _counter
+        get() = this._counter
+
+    var messageText = ""
+    var messageHistory : MutableLiveData<String> = MutableLiveData()
+
+    fun sendMessage() {
+        val msg : ChatMessage = ChatMessage(rm = "123", user = this.chatUser, msg = this.messageText)
+        this.realm?.executeTransaction{ transactionRealm ->
+            transactionRealm.insert(msg)
+            Log.v("QUICKSTART", "\"$messageText\" inserted.")
+        }
+    }
+
+    fun getMessages(): String {
+        return "first message \n, second message \n"
+    }
 
     fun incrementCounter() {
-        realm?.executeTransaction {
-            counter.value?.let { counterValue ->
+        this.realm?.executeTransaction {
+            this.counter.value?.let { counterValue ->
                 counterValue.add()
-                _counter.postValue(counterValue)
+                this._counter.postValue(counterValue)
                 Log.v("QUICKSTART", "Incremented counter. New value: ${counterValue.value.get()}")
             }
         }
     }
 
     override fun onCleared() {
-        realm?.close()
+        this.realm?.close()
     }
 
     /*
@@ -39,25 +57,26 @@ class CounterModel() : ViewModel() {
      */
 
 
-
+    //TODO: Move this to onCreateView method on CounterFragment (or maybe on the activity)
+    //TODO: Add realm close on CounterFragment.onDestroyView
     fun connToRealmApp (enteredEmail: String, enteredPassword : String) {
-        val appID = "quickstart2-xjrwi" // TODO: replace this with your App ID
+
 
         // 1. connect to the MongoDB Realm app backend
-        val app = App(
-            AppConfiguration.Builder(appID)
+        this.app = App(
+            AppConfiguration.Builder(this.appID)
                 .build()
         )
 
-        Log.v("QUICKSTART", "Email: $enteredEmail - Password: $enteredPassword")
+
 
         // 2. authenticate a user
-        app.loginAsync(Credentials.anonymous()) {
+        this.app.loginAsync(Credentials.emailPassword(enteredEmail, enteredPassword)) {
             if(it.isSuccess) {
-                Log.v("QUICKSTART", "Successfully logged in anonymously.")
-
+                Log.v("QUICKSTART", "Successfully logged in Email: $enteredEmail, Password: $enteredPassword")
+                this.chatUser = enteredEmail
                 // 3. connect to a realm with Realm Sync
-                val user: User? = app.currentUser()
+                val user: User? = this.app.currentUser()
                 val partitionValue = "example partition"
                 val config = SyncConfiguration.Builder(user!!, partitionValue)
                     // because this application only reads/writes small amounts of data, it's OK to read/write from the UI thread
@@ -66,16 +85,16 @@ class CounterModel() : ViewModel() {
                     .build()
 
                 // open the realm
-                realm = Realm.getInstance(config)
+                this.realm = Realm.getInstance(config)
 
                 // 4. Query the realm for a Counter, creating a new Counter if one doesn't already exist
                 // access all counters stored in this realm
-                val counterQuery = realm!!.where<Counter>()
+                val counterQuery = this.realm!!.where<Counter>()
                 val counters = counterQuery.findAll()
 
                 // if we haven't created the one counter for this app before (as on first launch), create it now
                 if (counters.size == 0) {
-                    realm?.executeTransaction { transactionRealm ->
+                    this.realm?.executeTransaction { transactionRealm ->
                         val counter = Counter()
                         transactionRealm.insert(counter)
                     }
@@ -84,6 +103,7 @@ class CounterModel() : ViewModel() {
                 // 5. Instantiate a LiveRealmObject using the Counter and store it in a member variable
                 // the counters query is life, so we can just grab the 0th index to get a guaranteed counter
                 this._counter.postValue(counters[0]!!)
+                this.messageHistory.value = getMessages()
 
             } else {
                 Log.e("QUICKSTART", "Failed to log in anonymously. Error: ${it.error.message}")

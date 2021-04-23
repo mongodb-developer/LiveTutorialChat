@@ -12,4 +12,7 @@
     <string name="enter_password_hint">Enter password</string>
     <string name="enter_email_address">Enter Email Address</string>
     <string name="login_button">Login</string>
+    <string name="enter_message">Enter message</string>
+    <string name="send">Send</string>
+    <string name="EmptyChatString" />
 </resources>
