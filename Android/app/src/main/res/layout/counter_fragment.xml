@@ -23,67 +23,61 @@
             android:id="@+id/textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="42dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginBottom="16dp"
             android:text="@{myCounterModel.counter.value.get().toString()}"
             android:textSize="58pt"
-            app:layout_constraintBottom_toTopOf="@+id/button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/messageHistoryView" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="116dp"
+            android:layout_marginBottom="16dp"
             android:onClick="@{() -> myCounterModel.incrementCounter()}"
             android:text="@string/add"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <EditText
             android:id="@+id/enterMessageBox"
-            android:layout_width="307dp"
+            android:layout_width="0dp"
             android:layout_height="54dp"
             android:layout_marginStart="12dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="12dp"
-            android:layout_marginBottom="21dp"
+            android:autofillHints=""
             android:ems="10"
             android:hint="@string/enter_message"
-            android:text="@={myCounterModel.messageText}"
             android:inputType="textShortMessage"
-            app:layout_constraintBottom_toTopOf="@+id/messageHistoryView"
+            android:text="@={myCounterModel.messageText}"
+            app:layout_constraintEnd_toStartOf="@+id/sendMessageButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:autofillHints="" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/sendMessageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:layout_marginEnd="4dp"
             android:layout_marginRight="4dp"
-            android:layout_marginBottom="23dp"
-            android:text="@string/send"
             android:onClick="@{() -> myCounterModel.sendMessage()}"
-            app:layout_constraintBottom_toTopOf="@+id/messageHistoryView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/send"
+            app:layout_constraintBaseline_toBaselineOf="@+id/enterMessageBox"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/messageHistoryView"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginBottom="19dp"
             android:text="@={myCounterModel.messageHistory}"
             app:layout_constraintBottom_toTopOf="@+id/textview"
-            app:layout_constraintEnd_toStartOf="@+id/textview"
-            app:layout_constraintStart_toStartOf="@+id/textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/enterMessageBox" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

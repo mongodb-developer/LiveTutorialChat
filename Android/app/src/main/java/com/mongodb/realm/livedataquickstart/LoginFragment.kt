@@ -6,9 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.net.Uri
+import android.util.Log
 import androidx.navigation.Navigation
+import io.realm.mongodb.Credentials
+import io.realm.mongodb.User
+import io.realm.mongodb.sync.SyncConfiguration
 import kotlinx.android.synthetic.main.fragment_login.*
 
+// TODO: Need to authenticate here and only switch to chat when authentication is succesful
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -28,11 +33,29 @@ class LoginFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         loginButton.setOnClickListener{
-            var action: LoginFragmentDirections.ActionLoginFragmentToCounterFragment =
-                LoginFragmentDirections.actionLoginFragmentToCounterFragment()
-            action.setEmail(editTextEmailAddress.text.toString())
-            action.setPassword(editTextPassword.text.toString())
-            Navigation.findNavController(it).navigate(action)
+
+            val eMail = editTextEmailAddress.text.toString()
+            val pWord = editTextPassword.text.toString()
+
+            val view = it
+
+            chatApp.loginAsync(Credentials.emailPassword(eMail, pWord)) {
+                if (it.isSuccess) {
+                    Log.v("QUICKSTART", "Successfully logged in Email: $eMail, Password: $pWord")
+                    //this.chatUser = enteredEmail
+
+
+                    var action: LoginFragmentDirections.ActionLoginFragmentToCounterFragment =
+                        LoginFragmentDirections.actionLoginFragmentToCounterFragment()
+                    action.setEmail(editTextEmailAddress.text.toString())
+                    action.setPassword(editTextPassword.text.toString())
+                    Navigation.findNavController(view).navigate(action)
+                } else {
+                    //TODO: Add error message on screen
+                    val eMsg = "Failed to log $eMail. Error: ${it.error.message}"
+                    Log.e("QUICKSTART", eMsg)
+                }
+            }
         }
     }
 

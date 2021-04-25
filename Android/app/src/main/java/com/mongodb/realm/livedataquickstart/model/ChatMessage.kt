@@ -9,14 +9,20 @@ import java.util.*
 
 open class ChatMessage (rm : String, user: String, msg : String ): RealmObject() {
     @PrimaryKey
-    private var _id = ObjectId()
-    private var _partition = rm //This is the chat room TODO: change to chat room
-    private var author = user
-    private var text = msg
-    private var timestamp: Date = Date()
+    var _id: ObjectId? = ObjectId()
+    var _partition: String? = rm //This is the chat room TODO: change to chat room
+    var author : String? = user
+    var text: String? = msg
+    var timestamp: Date? = Date()
 
-    public constructor () : this(rm = "public", user = "anonymous", msg = "test message") {
+   constructor () : this(rm = "public", user = "anonymous", msg = "test message") {
         _id = ObjectId()
         timestamp = Date()
+    }
+
+    fun getAuthorName() : String {
+        val atPos = author!!.indexOf("@")
+
+        return author!!.subSequence(0, atPos).toString()
     }
 }
