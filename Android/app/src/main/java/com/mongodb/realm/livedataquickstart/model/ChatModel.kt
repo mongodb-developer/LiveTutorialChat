@@ -14,15 +14,12 @@ import androidx.lifecycle.MutableLiveData
 import com.mongodb.realm.livedataquickstart.chatApp
 import io.realm.RealmResults
 
-class CounterModel() : ViewModel() {
+class ChatModel() : ViewModel() {
 
     private var realm: Realm? = null
     private var chatUser = ""
-    private val _counter: LiveRealmObject<Counter> = LiveRealmObject(null)
-    val counter: LiveData<Counter>
-        get() = this._counter
 
-    lateinit var _chatMessages : LiveRealmResults<ChatMessage>
+    var _chatMessages : LiveRealmResults<ChatMessage>
 
     var messageText = "" //maps to send message text box in UI
     var messageHistory : MutableLiveData<String> = MutableLiveData()
@@ -51,17 +48,7 @@ class CounterModel() : ViewModel() {
         messageHistory.value = messageStr
     }
 
-    fun incrementCounter() {
-        this.realm?.executeTransaction {
-            this.counter.value?.let { counterValue ->
-                counterValue.add()
-                this._counter.postValue(counterValue)
-                Log.v("QUICKSTART", "Incremented counter. New value: ${counterValue.value.get()}")
-            }
-        }
-    }
-
-    override fun onCleared() {
+        override fun onCleared() {
         this.realm?.close()
     }
 
@@ -85,31 +72,8 @@ class CounterModel() : ViewModel() {
 
 
     //TODO: Add realm close on CounterFragment.onDestroyView
-    fun connToRealmApp (enteredEmail: String, enteredPassword : String) {
+    fun connToRealmApp (enteredEmail: String) {
 
         this.chatUser = enteredEmail
-
-        // 3. connect to a realm with Realm Sync
-
-
-        // 4. Query the realm for a Counter, creating a new Counter if one doesn't already exist
-        // access all counters stored in this realm
-        val counterQuery = this.realm!!.where<Counter>()
-        val counters = counterQuery.findAll()
-
-        // if we haven't created the one counter for this app before (as on first launch), create it now
-        if (counters.size == 0) {
-            this.realm?.executeTransaction { transactionRealm ->
-                val counter = Counter()
-                transactionRealm.insert(counter)
-            }
-        }
-
-        // 5. Instantiate a LiveRealmObject using the Counter and store it in a member variable
-        // the counters query is life, so we can just grab the 0th index to get a guaranteed counter
-        this._counter.postValue(counters[0]!!)
-        //_chatMessages = LiveRealmResults(realm?.where<ChatMessage>()!!.findAll())
-
-        //this.messageHistory.value = getMessages()
     }
 }

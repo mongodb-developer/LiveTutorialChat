@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/CounterFragment"
-        android:name="com.mongodb.realm.livedataquickstart.CounterFragment"
+        android:name="com.mongodb.realm.livedataquickstart.ChatFragment"
         android:label="@string/fragment_label"
-        tools:layout="@layout/counter_fragment">
+        tools:layout="@layout/chat_fragment">
         <argument
             android:name="email"
             app:argType="string"

@@ -1,21 +1,12 @@
 package com.mongodb.realm.livedataquickstart
 
 import android.os.Bundle
-import android.util.Log
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import io.realm.Realm
-import io.realm.kotlin.where
 import io.realm.mongodb.App
 import io.realm.mongodb.AppConfiguration
-import io.realm.mongodb.Credentials
-import io.realm.mongodb.User
-import io.realm.mongodb.sync.SyncConfiguration
-import com.mongodb.realm.livedataquickstart.model.Counter
-import android.net.Uri
 
 lateinit var chatApp: App
 private val appID = "quickstart2-xjrwi"

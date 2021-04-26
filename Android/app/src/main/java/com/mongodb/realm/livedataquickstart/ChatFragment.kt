@@ -1,41 +1,35 @@
 package com.mongodb.realm.livedataquickstart
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.databinding.DataBindingUtil
-import com.mongodb.realm.livedataquickstart.R
-import com.mongodb.realm.livedataquickstart.databinding.CounterFragmentBinding
-import com.mongodb.realm.livedataquickstart.model.CounterModel
-import kotlinx.android.synthetic.main.counter_fragment.view.*
+import com.mongodb.realm.livedataquickstart.databinding.ChatFragmentBinding
+import com.mongodb.realm.livedataquickstart.model.ChatModel
+import kotlinx.android.synthetic.main.chat_fragment.view.*
 import android.net.Uri
 import androidx.lifecycle.Observer
 import com.mongodb.realm.livedataquickstart.model.ChatMessage
-import com.mongodb.realm.livedataquickstart.model.LiveRealmResults
-import io.realm.RealmResults
 
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class CounterFragment : Fragment() {
+class ChatFragment : Fragment() {
 
-    lateinit var binding:CounterFragmentBinding
+    lateinit var binding:ChatFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?): View {
-        val model: CounterModel by viewModels()
+        val model: ChatModel by viewModels()
 
-        binding = CounterFragmentBinding.inflate(inflater, container, false).apply {
+        binding = ChatFragmentBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
-            myCounterModel = model
+            myChatModel = model
         }
 
         val messageObserver = Observer<List<ChatMessage>?> {
@@ -61,15 +55,16 @@ class CounterFragment : Fragment() {
         super.onStart()
 
         arguments?.let {
-            val args = CounterFragmentArgs.fromBundle(it)
+            val args = ChatFragmentArgs.fromBundle(it)
  //           this.binding.getCounterModel()!!.enteredEmail = args.email
  //           this.binding.getCounterModel()!!.enteredPassword = args.password
 
-            this.binding.getMyCounterModel()!!.connToRealmApp(args.email, args.password)
+            this.binding.getMyChatModel()!!.connToRealmApp(args.email)
 
         }
     }
 
+    //TODO: Is this necessary?????
     interface OnFragmentInteractionListener {
         //TODO: Update argument type and name
         fun OnFragmentInteractionListener(uri: Uri)
