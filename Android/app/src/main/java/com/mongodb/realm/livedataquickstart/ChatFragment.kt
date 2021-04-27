@@ -10,6 +10,7 @@ import com.mongodb.realm.livedataquickstart.databinding.ChatFragmentBinding
 import com.mongodb.realm.livedataquickstart.model.ChatModel
 import kotlinx.android.synthetic.main.chat_fragment.view.*
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.Observer
 import com.mongodb.realm.livedataquickstart.model.ChatMessage
 
@@ -28,8 +29,8 @@ class ChatFragment : Fragment() {
         val model: ChatModel by viewModels()
 
         binding = ChatFragmentBinding.inflate(inflater, container, false).apply {
-            lifecycleOwner = viewLifecycleOwner
             myChatModel = model
+            lifecycleOwner = viewLifecycleOwner
         }
 
         val messageObserver = Observer<List<ChatMessage>?> {
@@ -38,7 +39,13 @@ class ChatFragment : Fragment() {
 
         model._chatMessages.observe(this.viewLifecycleOwner, messageObserver)
 
-        this.activity
+
+        binding.root.sendMessageButton.setOnClickListener(){
+            Log.v("QUICKSTART", "Running on click listener")
+            model.sendMessage()
+            this.sendMessage()
+        }
+
 
         /*
         // Replaced by onClick listener in counter_fragment.xml
@@ -49,6 +56,11 @@ class ChatFragment : Fragment() {
         */
 
         return binding.root
+    }
+
+    fun sendMessage() {
+        Log.v("QUICKSTART", "Clearing text box")
+        binding.root.enterMessageBox.getText().clear()
     }
 
     override fun onStart() {

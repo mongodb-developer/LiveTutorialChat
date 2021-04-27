@@ -45,13 +45,12 @@
             android:layout_marginEnd="4dp"
             android:layout_marginRight="4dp"
             android:layout_marginBottom="23dp"
-            android:onClick="@{() -> myChatModel.sendMessage()}"
             android:text="@string/send"
             app:layout_constraintBottom_toTopOf="@+id/messageHistoryView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/enterMessageBox"
             app:layout_constraintTop_toTopOf="parent" />
-
+        <!--            android:onClick="@{() -> myChatModel.sendMessage()}" -->
         <TextView
             android:id="@+id/messageHistoryView"
             android:layout_width="0dp"

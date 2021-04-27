@@ -1,6 +1,7 @@
 package com.mongodb.realm.livedataquickstart.model
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import io.realm.Realm
@@ -11,8 +12,12 @@ import io.realm.mongodb.Credentials
 import io.realm.mongodb.User
 import io.realm.mongodb.sync.SyncConfiguration
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.mongodb.realm.livedataquickstart.BR
+import com.mongodb.realm.livedataquickstart.ChatFragment
 import com.mongodb.realm.livedataquickstart.chatApp
 import io.realm.RealmResults
+import kotlinx.android.synthetic.main.chat_fragment.view.*
 
 class ChatModel() : ViewModel() {
 
@@ -31,7 +36,8 @@ class ChatModel() : ViewModel() {
         this.realm?.executeTransaction{ transactionRealm ->
             transactionRealm.insert(msg)
             Log.v("QUICKSTART", "\"$messageText\" inserted.")
-        }
+         }
+        this.messageText = ""
     }
 
 
@@ -65,7 +71,7 @@ class ChatModel() : ViewModel() {
         // open the realm
         this.realm = Realm.getInstance(config)
 
-        _chatMessages = LiveRealmResults(realm?.where<ChatMessage>()!!.findAll())
+        _chatMessages = LiveRealmResults(realm?.where<ChatMessage>()!!.findAll().sort("timestamp"))
         setMessageHistoryText(_chatMessages.value!!)
     }
 
