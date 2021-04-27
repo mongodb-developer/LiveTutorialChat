@@ -54,6 +54,7 @@ class LoginFragment : Fragment() {
                     //TODO: Add error message on screen
                     val eMsg = "Failed to log $eMail. Error: ${it.error.message}"
                     Log.e("QUICKSTART", eMsg)
+                    setErrorMsg(eMail, eMsg)
                 }
             }
         }
@@ -73,6 +74,10 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false)
+    }
+
+    fun setErrorMsg(email : String, msg : String) {
+        errorMsgBox.text = "Incorrect user name or password for user: $email"
     }
 
     companion object {
