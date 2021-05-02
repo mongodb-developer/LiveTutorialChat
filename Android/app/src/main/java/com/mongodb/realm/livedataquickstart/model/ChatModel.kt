@@ -1,30 +1,21 @@
 package com.mongodb.realm.livedataquickstart.model
 
 import android.util.Log
-import android.view.View
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import io.realm.Realm
 import io.realm.kotlin.where
-import io.realm.mongodb.App
-import io.realm.mongodb.AppConfiguration
-import io.realm.mongodb.Credentials
 import io.realm.mongodb.User
 import io.realm.mongodb.sync.SyncConfiguration
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.mongodb.realm.livedataquickstart.BR
-import com.mongodb.realm.livedataquickstart.ChatFragment
 import com.mongodb.realm.livedataquickstart.chatApp
-import io.realm.RealmResults
-import kotlinx.android.synthetic.main.chat_fragment.view.*
 
 class ChatModel() : ViewModel() {
 
     private var realm: Realm? = null
-    private var chatUser = ""
+    var chatUser = ""
+    var chatRoom = ""
 
-    var _chatMessages : LiveRealmResults<ChatMessage>
+    var _chatMessages : LiveRealmResults<ChatMessage>? = null
 
     var messageText = "" //maps to send message text box in UI
     var messageHistory : MutableLiveData<String> = MutableLiveData()
@@ -58,10 +49,19 @@ class ChatModel() : ViewModel() {
         this.realm?.close()
     }
 
-
+/*
     init {
+        openRealm()
+    }
+
+ */
+
+    fun openRealm() {
         val user: User? =  chatApp.currentUser()
-        val partitionValue = "example partition"
+        val partitionValue = this.chatRoom
+        //var partitionValue = "example partition"
+
+        Log.v("QUICKSTART", "Openning Realm. The chat room is: " + this.chatRoom)
         val config = SyncConfiguration.Builder(user!!, partitionValue)
             // because this application only reads/writes small amounts of data, it's OK to read/write from the UI thread
             .allowWritesOnUiThread(true)
@@ -72,14 +72,22 @@ class ChatModel() : ViewModel() {
         this.realm = Realm.getInstance(config)
 
         _chatMessages = LiveRealmResults(realm?.where<ChatMessage>()!!.findAll().sort("timestamp"))
-        setMessageHistoryText(_chatMessages.value!!)
+
+        //TODO: doesn't work when room is empty
+        setMessageHistoryText(_chatMessages!!.value!!)
     }
 
 
 
+
+
+
     //TODO: Add realm close on CounterFragment.onDestroyView
-    fun connToRealmApp (enteredEmail: String) {
+    fun connToRealmApp (enteredEmail: String, selectedChatRoom: String) {
 
         this.chatUser = enteredEmail
+        this.chatRoom = selectedChatRoom
+
+        openRealm()
     }
 }

@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import com.mongodb.realm.livedataquickstart.model.ChatMessage
 
 
+
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
@@ -32,20 +33,19 @@ class ChatFragment : Fragment() {
             myChatModel = model
             lifecycleOwner = viewLifecycleOwner
         }
-
+/*
         val messageObserver = Observer<List<ChatMessage>?> {
                 cMessages -> model.setMessageHistoryText(cMessages)
         }
 
-        model._chatMessages.observe(this.viewLifecycleOwner, messageObserver)
-
+        model._chatMessages?.observe(this.viewLifecycleOwner, messageObserver)
+*/
 
         binding.root.sendMessageButton.setOnClickListener(){
             Log.v("QUICKSTART", "Running on click listener")
             model.sendMessage()
             this.sendMessage()
         }
-
 
         /*
         // Replaced by onClick listener in counter_fragment.xml
@@ -71,7 +71,13 @@ class ChatFragment : Fragment() {
  //           this.binding.getCounterModel()!!.enteredEmail = args.email
  //           this.binding.getCounterModel()!!.enteredPassword = args.password
 
-            this.binding.getMyChatModel()!!.connToRealmApp(args.email)
+            this.binding.getMyChatModel()!!.connToRealmApp(args.email, args.chatRoom)
+
+            val messageObserver = Observer<List<ChatMessage>?> {
+                    cMessages -> binding.myChatModel?.setMessageHistoryText(cMessages)
+            }
+
+            binding.myChatModel?._chatMessages?.observe(viewLifecycleOwner, messageObserver)
 
         }
     }

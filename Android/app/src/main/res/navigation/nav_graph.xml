@@ -15,9 +15,9 @@
             app:argType="string"
             android:defaultValue="NoEmail" />
         <argument
-            android:name="password"
+            android:name="chatRoom"
             app:argType="string"
-            android:defaultValue=""/>
+            android:defaultValue="Everyone"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -25,7 +25,24 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_CounterFragment"
+            android:id="@+id/action_loginFragment_to_ChatRoomFragment"
+            app:destination="@id/chatRoomSelect" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatRoomSelect"
+        android:name="com.mongodb.realm.livedataquickstart.ChatRoomSelect"
+        android:label="fragment_chat_room_select"
+        tools:layout="@layout/fragment_chat_room_select" >
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="NoEmail" />
+        <argument
+            android:name="password"
+            app:argType="string"
+            android:defaultValue=""/>
+        <action
+            android:id="@+id/action_chatRoomSelect_to_ChatFragment"
             app:destination="@id/ChatFragment" />
     </fragment>
 </navigation>

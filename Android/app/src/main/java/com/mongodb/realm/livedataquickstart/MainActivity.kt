@@ -12,7 +12,6 @@ lateinit var chatApp: App
 private val appID = "quickstart2-xjrwi"
 
 class MainActivity : AppCompatActivity(){
-    //lateinit var realm: Realm
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,4 +41,5 @@ class MainActivity : AppCompatActivity(){
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.net.Uri
 import android.util.Log
 import androidx.navigation.Navigation
+import com.mongodb.realm.livedataquickstart.LoginFragmentDirections.ActionLoginFragmentToChatRoomFragment
 import io.realm.mongodb.Credentials
 import io.realm.mongodb.User
 import io.realm.mongodb.sync.SyncConfiguration
@@ -45,8 +46,8 @@ class LoginFragment : Fragment() {
                     //this.chatUser = enteredEmail
 
 
-                    var action: LoginFragmentDirections.ActionLoginFragmentToCounterFragment =
-                        LoginFragmentDirections.actionLoginFragmentToCounterFragment()
+                    //var action: ActionLoginFragmentToChatRoomFragment = ActionLoginFragmentToChatRoomFragment()
+                    val action : ActionLoginFragmentToChatRoomFragment = LoginFragmentDirections.actionLoginFragmentToChatRoomFragment()
                     action.setEmail(editTextEmailAddress.text.toString())
                     action.setPassword(editTextPassword.text.toString())
                     Navigation.findNavController(view).navigate(action)

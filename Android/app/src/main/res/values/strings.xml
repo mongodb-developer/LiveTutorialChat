@@ -15,4 +15,9 @@
     <string name="enter_message">Enter message</string>
     <string name="send">Send</string>
     <string name="EmptyMessage" />
+    <string name="serverButtonName">Server</string>
+    <string name="searchButtonName">Search</string>
+    <string name="chartsButtonName">Charts</string>
+    <string name="realmButtonName">Realm</string>
+    <string name="atlasButtonName">Atlas</string>
 </resources>
