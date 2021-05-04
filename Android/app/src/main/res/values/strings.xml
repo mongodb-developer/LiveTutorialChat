@@ -20,4 +20,8 @@
     <string name="chartsButtonName">Charts</string>
     <string name="realmButtonName">Realm</string>
     <string name="atlasButtonName">Atlas</string>
+    <string name="failedLoginMessage">Incorrect user name or password for user: %1$s</string>
+    <string name="roomLabelText">Room:</string>
+    <string name="switch_room_button">Switch Room</string>
+    <string name="chatRoomName">TextView</string>
 </resources>

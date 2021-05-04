@@ -1,4 +1,4 @@
-package com.mongodb.realm.livedataquickstart
+package com.mongodb.realm.mongodblivechat
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,14 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.mongodb.realm.livedataquickstart.databinding.ChatFragmentBinding
-import com.mongodb.realm.livedataquickstart.model.ChatModel
+import com.mongodb.realm.mongodblivechat.databinding.ChatFragmentBinding
+import com.mongodb.realm.mongodblivechat.model.ChatModel
 import kotlinx.android.synthetic.main.chat_fragment.view.*
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.Observer
-import com.mongodb.realm.livedataquickstart.model.ChatMessage
-
+import androidx.navigation.Navigation
+import com.mongodb.realm.mongodblivechat.model.ChatMessage
+import kotlinx.android.synthetic.main.chat_fragment.*
 
 
 /**
@@ -56,6 +57,15 @@ class ChatFragment : Fragment() {
         */
 
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        switchRoomButton.setOnClickListener{
+            val action : ChatFragmentDirections.ActionBackToChatFragmentToChatRoomSelect= ChatFragmentDirections.actionBackToChatFragmentToChatRoomSelect()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     fun sendMessage() {

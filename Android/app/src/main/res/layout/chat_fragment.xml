@@ -7,10 +7,10 @@
     <data android:id="@+id/data">
         <variable
             name="myChatModel"
-            type="com.mongodb.realm.livedataquickstart.model.ChatModel" />
+            type="com.mongodb.realm.mongodblivechat.model.ChatModel" />
         <variable
             name="uiController"
-            type="com.mongodb.realm.livedataquickstart.ChatFragment" />
+            type="com.mongodb.realm.mongodblivechat.ChatFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,23 +19,36 @@
         android:layout_height="match_parent"
         tools:context=".ChatFragment">
 
+        <!--            android:onClick="@{() -> myChatModel.sendMessage()}" -->
         <EditText
             android:id="@+id/enterMessageBox"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
             android:layout_marginStart="12dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="21dp"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/enter_message"
             android:inputType="textShortMessage"
             android:text="@={myChatModel.messageText}"
-            app:layout_constraintBottom_toTopOf="@+id/messageHistoryView"
+            app:layout_constraintBottom_toBottomOf="@+id/sendMessageButton"
             app:layout_constraintEnd_toStartOf="@+id/sendMessageButton"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/messageHistoryView"
+            android:layout_width="390dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="69dp"
+            android:text="@={myChatModel.messageHistory}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/sendMessageButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/sendMessageButton" />
 
         <Button
             android:id="@+id/sendMessageButton"
@@ -44,26 +57,52 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="4dp"
             android:layout_marginRight="4dp"
-            android:layout_marginBottom="23dp"
+            android:layout_marginBottom="6dp"
             android:text="@string/send"
             app:layout_constraintBottom_toTopOf="@+id/messageHistoryView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/enterMessageBox"
             app:layout_constraintTop_toTopOf="parent" />
-        <!--            android:onClick="@{() -> myChatModel.sendMessage()}" -->
-        <TextView
-            android:id="@+id/messageHistoryView"
+
+        <Button
+            android:id="@+id/switchRoomButton"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginBottom="2dp"
-            android:text="@={myChatModel.messageHistory}"
+            android:layout_height="38dp"
+            android:layout_marginEnd="29dp"
+            android:layout_marginRight="29dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/switch_room_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/chatRoomText" />
+
+        <TextView
+            android:id="@+id/roomTextView"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginEnd="161dp"
+            android:layout_marginRight="161dp"
+            android:text="@string/roomLabelText"
+            app:layout_constraintBottom_toBottomOf="@+id/chatRoomText"
+            app:layout_constraintEnd_toEndOf="@+id/messageHistoryView"
+            app:layout_constraintEnd_toStartOf="@+id/switchRoomButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sendMessageButton" />
+            app:layout_constraintTop_toTopOf="@+id/chatRoomText" />
+
+        <TextView
+            android:id="@+id/chatRoomText"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="57dp"
+            android:layout_marginLeft="57dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginRight="9dp"
+            android:text="@={myChatModel.chatRoom}"
+            app:layout_constraintBottom_toBottomOf="@+id/switchRoomButton"
+            app:layout_constraintEnd_toStartOf="@+id/switchRoomButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/switchRoomButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

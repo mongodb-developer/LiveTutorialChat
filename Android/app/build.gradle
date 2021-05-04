@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.mongodb.realm.livedataquickstart"
+        applicationId "com.mongodb.realm.mongodblivechat"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1

@@ -1,4 +1,4 @@
-package com.mongodb.realm.livedataquickstart.model
+package com.mongodb.realm.mongodblivechat.model
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -7,7 +7,7 @@ import io.realm.kotlin.where
 import io.realm.mongodb.User
 import io.realm.mongodb.sync.SyncConfiguration
 import androidx.lifecycle.MutableLiveData
-import com.mongodb.realm.livedataquickstart.chatApp
+import com.mongodb.realm.mongodblivechat.chatApp
 
 class ChatModel() : ViewModel() {
 

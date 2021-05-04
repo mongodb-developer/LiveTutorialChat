@@ -1,4 +1,4 @@
-package com.mongodb.realm.livedataquickstart
+package com.mongodb.realm.mongodblivechat
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

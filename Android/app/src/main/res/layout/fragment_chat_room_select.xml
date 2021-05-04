@@ -7,7 +7,7 @@
 
         <variable
             name="roomModel"
-            type="com.mongodb.realm.livedataquickstart.model.RoomModel" />
+            type="com.mongodb.realm.mongodblivechat.model.RoomModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

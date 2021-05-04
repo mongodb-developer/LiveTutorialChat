@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/ChatFragment"
-        android:name="com.mongodb.realm.livedataquickstart.ChatFragment"
+        android:name="com.mongodb.realm.mongodblivechat.ChatFragment"
         android:label="@string/fragment_label"
         tools:layout="@layout/chat_fragment">
         <argument
@@ -18,10 +18,13 @@
             android:name="chatRoom"
             app:argType="string"
             android:defaultValue="Everyone"/>
+        <action
+            android:id="@+id/action_backTo_ChatFragment_to_chatRoomSelect"
+            app:destination="@id/chatRoomSelect" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.mongodb.realm.livedataquickstart.LoginFragment"
+        android:name="com.mongodb.realm.mongodblivechat.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -30,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatRoomSelect"
-        android:name="com.mongodb.realm.livedataquickstart.ChatRoomSelect"
+        android:name="com.mongodb.realm.mongodblivechat.ChatRoomSelect"
         android:label="fragment_chat_room_select"
         tools:layout="@layout/fragment_chat_room_select" >
         <argument

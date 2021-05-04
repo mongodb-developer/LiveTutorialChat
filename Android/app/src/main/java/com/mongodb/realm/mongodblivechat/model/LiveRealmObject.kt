@@ -1,8 +1,7 @@
-package com.mongodb.realm.livedataquickstart.model
+package com.mongodb.realm.mongodblivechat.model
 
 
 import androidx.annotation.MainThread
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.realm.RealmModel
 import io.realm.RealmObject

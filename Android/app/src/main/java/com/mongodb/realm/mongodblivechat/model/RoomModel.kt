@@ -1,4 +1,4 @@
-package com.mongodb.realm.livedataquickstart.model
+package com.mongodb.realm.mongodblivechat.model
 
 import androidx.lifecycle.ViewModel
 

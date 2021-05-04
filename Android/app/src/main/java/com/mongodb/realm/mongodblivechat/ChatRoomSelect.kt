@@ -1,4 +1,4 @@
-package com.mongodb.realm.livedataquickstart
+package com.mongodb.realm.mongodblivechat
 
 import android.net.Uri
 import android.os.Bundle
@@ -6,15 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 
-import com.mongodb.realm.livedataquickstart.ChatRoomSelectDirections.ActionChatRoomSelectToChatFragment
-import com.mongodb.realm.livedataquickstart.databinding.ChatFragmentBinding
+import com.mongodb.realm.mongodblivechat.ChatRoomSelectDirections.ActionChatRoomSelectToChatFragment
 import kotlinx.android.synthetic.main.fragment_chat_room_select.*
-import com.mongodb.realm.livedataquickstart.databinding.FragmentChatRoomSelectBinding
-import com.mongodb.realm.livedataquickstart.model.RoomModel
+import com.mongodb.realm.mongodblivechat.databinding.FragmentChatRoomSelectBinding
+import com.mongodb.realm.mongodblivechat.model.RoomModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

@@ -1,4 +1,4 @@
-package com.mongodb.realm.livedataquickstart
+package com.mongodb.realm.mongodblivechat
 
 import org.junit.Test
 

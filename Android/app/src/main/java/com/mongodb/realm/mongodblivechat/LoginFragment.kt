@@ -1,4 +1,4 @@
-package com.mongodb.realm.livedataquickstart
+package com.mongodb.realm.mongodblivechat
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import android.net.Uri
 import android.util.Log
 import androidx.navigation.Navigation
-import com.mongodb.realm.livedataquickstart.LoginFragmentDirections.ActionLoginFragmentToChatRoomFragment
+import com.mongodb.realm.mongodblivechat.LoginFragmentDirections.ActionLoginFragmentToChatRoomFragment
 import io.realm.mongodb.Credentials
-import io.realm.mongodb.User
-import io.realm.mongodb.sync.SyncConfiguration
 import kotlinx.android.synthetic.main.fragment_login.*
+import com.mongodb.realm.mongodblivechat.R.string.failedLoginMessage as failedLoginMessage
 
 // TODO: Need to authenticate here and only switch to chat when authentication is succesful
 // TODO: Rename parameter arguments, choose names that match
@@ -55,7 +54,7 @@ class LoginFragment : Fragment() {
                     //TODO: Add error message on screen
                     val eMsg = "Failed to log $eMail. Error: ${it.error.message}"
                     Log.e("QUICKSTART", eMsg)
-                    setErrorMsg(eMail, eMsg)
+                    setErrorMsg(eMail)
                 }
             }
         }
@@ -77,8 +76,9 @@ class LoginFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
-    fun setErrorMsg(email : String, msg : String) {
-        errorMsgBox.text = "Incorrect user name or password for user: $email"
+    fun setErrorMsg(email : String) {
+        val errMsg : String = getString(failedLoginMessage, email)
+        errorMsgBox.text = errMsg
     }
 
     companion object {

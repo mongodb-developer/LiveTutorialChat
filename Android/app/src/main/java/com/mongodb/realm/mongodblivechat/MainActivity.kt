@@ -1,4 +1,4 @@
-package com.mongodb.realm.livedataquickstart
+package com.mongodb.realm.mongodblivechat
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
