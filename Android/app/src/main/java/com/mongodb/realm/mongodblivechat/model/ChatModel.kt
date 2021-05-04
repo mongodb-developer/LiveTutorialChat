@@ -23,10 +23,10 @@ class ChatModel() : ViewModel() {
 
 
     fun sendMessage() {
-        val msg = ChatMessage(rm = "123", user = this.chatUser, msg = this.messageText)
+        val msg = ChatMessage(rm = this.chatRoom, user = this.chatUser, msg = this.messageText)
         this.realm?.executeTransaction{ transactionRealm ->
             transactionRealm.insert(msg)
-            Log.v("QUICKSTART", "\"$messageText\" inserted.")
+            Log.v("QUICKSTART", "\"$messageText\" inserted in Room: ${this.chatRoom} for user: ${this.chatUser}")
          }
         this.messageText = ""
     }
@@ -73,7 +73,6 @@ class ChatModel() : ViewModel() {
 
         _chatMessages = LiveRealmResults(realm?.where<ChatMessage>()!!.findAll().sort("timestamp"))
 
-        //TODO: doesn't work when room is empty
         setMessageHistoryText(_chatMessages!!.value!!)
     }
 

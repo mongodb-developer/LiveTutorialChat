@@ -64,6 +64,7 @@ class ChatFragment : Fragment() {
 
         switchRoomButton.setOnClickListener{
             val action : ChatFragmentDirections.ActionBackToChatFragmentToChatRoomSelect= ChatFragmentDirections.actionBackToChatFragmentToChatRoomSelect()
+            action.setEmail(binding.myChatModel!!.chatUser)
             Navigation.findNavController(it).navigate(action)
         }
     }

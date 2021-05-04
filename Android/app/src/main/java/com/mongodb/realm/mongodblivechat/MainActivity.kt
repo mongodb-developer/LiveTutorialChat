@@ -9,7 +9,7 @@ import io.realm.mongodb.App
 import io.realm.mongodb.AppConfiguration
 
 lateinit var chatApp: App
-private val appID = "quickstart2-xjrwi"
+private val appID = "mongodb-live-chat-pzxfo"
 
 class MainActivity : AppCompatActivity(){
 

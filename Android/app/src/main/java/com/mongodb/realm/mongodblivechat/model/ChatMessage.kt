@@ -8,7 +8,7 @@ import java.util.*
 open class ChatMessage (rm : String, user: String, msg : String ): RealmObject() {
     @PrimaryKey
     var _id: ObjectId? = ObjectId()
-    var _partition: String? = rm //This is the chat room TODO: change to chat room
+    var chatRoom: String = rm
     var author : String? = user
     var text: String? = msg
     var timestamp: Date? = Date()
@@ -21,6 +21,6 @@ open class ChatMessage (rm : String, user: String, msg : String ): RealmObject()
     fun getAuthorName() : String {
         val atPos = author!!.indexOf("@")
 
-        return author!!.subSequence(0, atPos).toString()
+        return if (atPos > 0) author!!.subSequence(0, atPos).toString() else author!!
     }
 }
