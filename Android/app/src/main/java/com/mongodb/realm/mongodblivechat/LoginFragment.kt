@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.net.Uri
 import android.util.Log
 import androidx.navigation.Navigation
 import com.mongodb.realm.mongodblivechat.LoginFragmentDirections.ActionLoginFragmentToChatRoomFragment
@@ -13,27 +12,23 @@ import io.realm.mongodb.Credentials
 import kotlinx.android.synthetic.main.fragment_login.*
 import com.mongodb.realm.mongodblivechat.R.string.failedLoginMessage as failedLoginMessage
 
-// TODO: Need to authenticate here and only switch to chat when authentication is succesful
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+
 
 /**
  * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
  */
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        //TODO: [STEP 1] - Complete code for loginButton on click listener action
+        //This listener should perform the following tasks
+        //Use the email and password entered into the respective text boxes to authenticate the user
+        // - If authentication is successful, then the UI should navigate to the ChatRoomSelect fragment
+        // - If authentication fails, then an error message should be displayed and the UI should not switch screens
         loginButton.setOnClickListener{
-
+            //TODO: [STEP 1] - Complete this
             val eMail = editTextEmailAddress.text.toString()
             val pWord = editTextPassword.text.toString()
 
@@ -42,29 +37,17 @@ class LoginFragment : Fragment() {
             chatApp.loginAsync(Credentials.emailPassword(eMail, pWord)) {
                 if (it.isSuccess) {
                     Log.v("QUICKSTART", "Successfully logged in Email: $eMail, Password: $pWord")
-                    //this.chatUser = enteredEmail
 
-
-                    //var action: ActionLoginFragmentToChatRoomFragment = ActionLoginFragmentToChatRoomFragment()
                     val action : ActionLoginFragmentToChatRoomFragment = LoginFragmentDirections.actionLoginFragmentToChatRoomFragment()
                     action.setEmail(editTextEmailAddress.text.toString())
                     action.setPassword(editTextPassword.text.toString())
                     Navigation.findNavController(view).navigate(action)
                 } else {
-                    //TODO: Add error message on screen
                     val eMsg = "Failed to log $eMail. Error: ${it.error.message}"
                     Log.e("QUICKSTART", eMsg)
                     setErrorMsg(eMail)
                 }
             }
-        }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
         }
     }
 
@@ -79,30 +62,5 @@ class LoginFragment : Fragment() {
     fun setErrorMsg(email : String) {
         val errMsg : String = getString(failedLoginMessage, email)
         errorMsgBox.text = errMsg
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LoginFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-
-    interface OnFragmentInteractionListener {
-        //TODO: Update argument type and name
-        fun OnFragmentInteractionListener(uri: Uri)
     }
 }

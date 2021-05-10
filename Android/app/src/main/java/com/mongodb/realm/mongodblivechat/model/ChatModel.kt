@@ -42,19 +42,14 @@ class ChatModel() : ViewModel() {
         for (msg in msgs) {
             messageStr = messageStr + "[" + msg.getAuthorName() + "] " + msg.text + "\n"
         }
+
         messageHistory.value = messageStr
     }
 
-        override fun onCleared() {
+    override fun onCleared() {
         this.realm?.close()
     }
 
-/*
-    init {
-        openRealm()
-    }
-
- */
 
     fun openRealm() {
         val user: User? =  chatApp.currentUser()
@@ -76,12 +71,10 @@ class ChatModel() : ViewModel() {
         setMessageHistoryText(_chatMessages!!.value!!)
     }
 
+    fun closeRealm() {
+        this.realm?.close()
+    }
 
-
-
-
-
-    //TODO: Add realm close on CounterFragment.onDestroyView
     fun connToRealmApp (enteredEmail: String, selectedChatRoom: String) {
 
         this.chatUser = enteredEmail

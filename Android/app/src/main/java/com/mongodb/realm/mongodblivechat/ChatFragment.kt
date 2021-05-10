@@ -9,12 +9,10 @@ import androidx.fragment.app.viewModels
 import com.mongodb.realm.mongodblivechat.databinding.ChatFragmentBinding
 import com.mongodb.realm.mongodblivechat.model.ChatModel
 import kotlinx.android.synthetic.main.chat_fragment.view.*
-import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.mongodb.realm.mongodblivechat.model.ChatMessage
-import kotlinx.android.synthetic.main.chat_fragment.*
 
 
 /**
@@ -34,41 +32,29 @@ class ChatFragment : Fragment() {
             myChatModel = model
             lifecycleOwner = viewLifecycleOwner
         }
-/*
-        val messageObserver = Observer<List<ChatMessage>?> {
-                cMessages -> model.setMessageHistoryText(cMessages)
-        }
-
-        model._chatMessages?.observe(this.viewLifecycleOwner, messageObserver)
-*/
-
+        //binding.root.sendMessageButton.setOnClickListener(){
         binding.root.sendMessageButton.setOnClickListener(){
             Log.v("QUICKSTART", "Running on click listener")
             model.sendMessage()
             this.sendMessage()
         }
 
-        /*
-        // Replaced by onClick listener in counter_fragment.xml
-        binding.root.button.setOnClickListener {
-            Log.v("QUICKSTART", "Clicked increment button. Current value: ${model.counter.value?.value?.get()}")
-            model.incrementCounter()
-        }
-        */
-
-        return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        switchRoomButton.setOnClickListener{
+        binding.root.switchRoomButton.setOnClickListener{
             val action : ChatFragmentDirections.ActionBackToChatFragmentToChatRoomSelect= ChatFragmentDirections.actionBackToChatFragmentToChatRoomSelect()
             action.setEmail(binding.myChatModel!!.chatUser)
             Navigation.findNavController(it).navigate(action)
+            model.closeRealm()
         }
-    }
 
+         return binding.root
+    }
+/*
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+
+    }
+*/
     fun sendMessage() {
         Log.v("QUICKSTART", "Clearing text box")
         binding.root.enterMessageBox.getText().clear()
@@ -79,8 +65,6 @@ class ChatFragment : Fragment() {
 
         arguments?.let {
             val args = ChatFragmentArgs.fromBundle(it)
- //           this.binding.getCounterModel()!!.enteredEmail = args.email
- //           this.binding.getCounterModel()!!.enteredPassword = args.password
 
             this.binding.getMyChatModel()!!.connToRealmApp(args.email, args.chatRoom)
 
@@ -91,11 +75,5 @@ class ChatFragment : Fragment() {
             binding.myChatModel?._chatMessages?.observe(viewLifecycleOwner, messageObserver)
 
         }
-    }
-
-    //TODO: Is this necessary?????
-    interface OnFragmentInteractionListener {
-        //TODO: Update argument type and name
-        fun OnFragmentInteractionListener(uri: Uri)
     }
 }
