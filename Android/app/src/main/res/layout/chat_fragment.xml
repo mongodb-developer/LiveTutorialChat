@@ -23,9 +23,9 @@
         <EditText
             android:id="@+id/enterMessageBox"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/enter_message"
@@ -37,15 +37,15 @@
 
         <TextView
             android:id="@+id/messageHistoryView"
-            android:layout_width="390dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
             android:layout_marginEnd="3dp"
             android:layout_marginRight="3dp"
-            android:layout_marginBottom="69dp"
+            android:layout_marginBottom="6dp"
             android:text="@={myChatModel.messageHistory}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/switchRoomButton"
             app:layout_constraintEnd_toEndOf="@+id/sendMessageButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sendMessageButton" />
@@ -55,8 +55,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
             android:layout_marginBottom="6dp"
             android:text="@string/send"
             app:layout_constraintBottom_toTopOf="@+id/messageHistoryView"
@@ -66,8 +66,8 @@
 
         <Button
             android:id="@+id/switchRoomButton"
-            android:layout_width="0dp"
-            android:layout_height="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginEnd="29dp"
             android:layout_marginRight="29dp"
             android:layout_marginBottom="16dp"
@@ -78,31 +78,31 @@
 
         <TextView
             android:id="@+id/roomTextView"
-            android:layout_width="0dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="11dp"
-            android:layout_marginLeft="11dp"
-            android:layout_marginEnd="161dp"
-            android:layout_marginRight="161dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
             android:text="@string/roomLabelText"
             app:layout_constraintBottom_toBottomOf="@+id/chatRoomText"
-            app:layout_constraintEnd_toEndOf="@+id/messageHistoryView"
-            app:layout_constraintEnd_toStartOf="@+id/switchRoomButton"
+            app:layout_constraintEnd_toStartOf="@+id/chatRoomText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/chatRoomText" />
 
         <TextView
             android:id="@+id/chatRoomText"
             android:layout_width="0dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="57dp"
-            android:layout_marginLeft="57dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginEnd="9dp"
             android:layout_marginRight="9dp"
             android:text="@={myChatModel.chatRoom}"
             app:layout_constraintBottom_toBottomOf="@+id/switchRoomButton"
             app:layout_constraintEnd_toStartOf="@+id/switchRoomButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/switchRoomButton" />
+            app:layout_constraintStart_toEndOf="@+id/roomTextView"
+            app:layout_constraintTop_toTopOf="@+id/switchRoomButton"
+            app:layout_constraintVertical_bias="0.517" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
