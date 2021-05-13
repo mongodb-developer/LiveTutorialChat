@@ -26,14 +26,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_marginLeft="6dp"
-            android:autofillHints=""
             android:ems="10"
             android:hint="@string/enter_message"
             android:inputType="textShortMessage"
             android:text="@={myChatModel.messageText}"
             app:layout_constraintBottom_toBottomOf="@+id/sendMessageButton"
             app:layout_constraintEnd_toStartOf="@+id/sendMessageButton"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/messageHistoryView"

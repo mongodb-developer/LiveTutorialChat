@@ -2,9 +2,11 @@
   <library name="Gradle: com.getkeepsafe.relinker:relinker:1.4.3@aar">
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/69eabe8bae597e2c2c88c7422b63d884/jetified-relinker-1.4.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/34b1d4cef0c35ad97251aeb2c141b483/jetified-relinker-1.4.3/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/34b1d4cef0c35ad97251aeb2c141b483/jetified-relinker-1.4.3/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/34b1d4cef0c35ad97251aeb2c141b483/jetified-relinker-1.4.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5eb1d772a6ca7ad5717fd3d3c7018160/jetified-relinker-1.4.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ebe8732966528ca366bd0ff6b1be6a4c/jetified-relinker-1.4.3/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ebe8732966528ca366bd0ff6b1be6a4c/jetified-relinker-1.4.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ebe8732966528ca366bd0ff6b1be6a4c/jetified-relinker-1.4.3/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.getkeepsafe.relinker/relinker/1.4.3/b445eff96b37af2f0749df14771465baf1914ccc/relinker-1.4.3-javadoc.jar!/" />
