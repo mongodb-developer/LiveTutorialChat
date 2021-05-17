@@ -67,13 +67,8 @@ class ChatFragment : Fragment() {
 
             this.binding.myChatModel!!.connToRealmApp(args.email, args.chatRoom)
 
-            val messageObserver = Observer<List<ChatMessage>?> {
-                    cMessages ->
-                binding.myChatModel?.setMessageHistoryText(cMessages)
-                Log.v("QUICKSTART", "Updating message history list")
-            }
+            //TODO: [Step 4c] - Set up observer ChatMessage list changes
 
-            binding.myChatModel?._chatMessages?.observe(viewLifecycleOwner, messageObserver)
 
         }
     }

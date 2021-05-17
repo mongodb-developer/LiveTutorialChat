@@ -36,8 +36,6 @@ class ChatRoomSelect : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        //TODO: [Step 2b] - Save selected chatroom to the RoomModel and navigate to the ChatFragment while
-        //   passing the user and chat room selection (see fun openChatWindow)
         serverButton.setOnClickListener{
             binding.roomModel?.chatRoom = "Atlas"
             openChatWindow(it, binding.roomModel?.chatUser.toString(), binding.roomModel?.chatRoom.toString())
@@ -66,10 +64,6 @@ class ChatRoomSelect : Fragment() {
     }
 
     fun openChatWindow(view: View, email: String, room: String) {
-        //TODO: [Step 2c] - Create an ActionChatRoomSelectToChatFragment action (note, these classes and methods are automatically generated
-        //   by the androidx Navigation libraries
-        //   - Set the email and chatRoom parameters of the action
-        //   - Navigate to the ChatFragment passing the action
         val action : ActionChatRoomSelectToChatFragment = ChatRoomSelectDirections.actionChatRoomSelectToChatFragment()
 
         action.setEmail(email)
@@ -89,7 +83,6 @@ class ChatRoomSelect : Fragment() {
             lifecycleOwner = viewLifecycleOwner
         }
 
-        //TODO: [STEP 2a] - save email passed by navigation from the LoginFragment to the RoomModel ViewModel
         binding.roomModel?.chatUser = this.email.toString()
 
         return binding.root

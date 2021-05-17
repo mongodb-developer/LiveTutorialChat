@@ -22,32 +22,17 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        //TODO: [STEP 1] - Complete code for loginButton on click listener action
         //This listener should perform the following tasks
         //Use the email and password entered into the respective text boxes to authenticate the user
         // - If authentication is successful, then the UI should navigate to the ChatRoomSelect fragment
         // - If authentication fails, then an error message should be displayed and the UI should not switch screens
         loginButton.setOnClickListener{
-            //TODO: [STEP 1] - Complete this
             val eMail = editTextEmailAddress.text.toString()
             val pWord = editTextPassword.text.toString()
 
             val view = it
+            //TODO: [STEP 2] - Complete loginButton onclick listener
 
-            chatApp.loginAsync(Credentials.emailPassword(eMail, pWord)) {
-                if (it.isSuccess) {
-                    Log.v("QUICKSTART", "Successfully logged in Email: $eMail, Password: $pWord")
-
-                    val action : ActionLoginFragmentToChatRoomFragment = LoginFragmentDirections.actionLoginFragmentToChatRoomFragment()
-                    action.setEmail(editTextEmailAddress.text.toString())
-                    action.setPassword(editTextPassword.text.toString())
-                    Navigation.findNavController(view).navigate(action)
-                } else {
-                    val eMsg = "Failed to log $eMail. Error: ${it.error.message}"
-                    Log.e("QUICKSTART", eMsg)
-                    setErrorMsg(eMail)
-                }
-            }
         }
     }
 
