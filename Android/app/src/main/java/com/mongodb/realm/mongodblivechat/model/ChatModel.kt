@@ -9,7 +9,7 @@ import io.realm.mongodb.sync.SyncConfiguration
 import androidx.lifecycle.MutableLiveData
 import com.mongodb.realm.mongodblivechat.chatApp
 
-class ChatModel() : ViewModel() {
+class ChatModel : ViewModel() {
 
     private var realm: Realm? = null
     var chatUser = ""
@@ -51,12 +51,12 @@ class ChatModel() : ViewModel() {
     }
 
 
-    fun openRealm() {
+    private fun openRealm() {
         val user: User? =  chatApp.currentUser()
         val partitionValue = this.chatRoom
         //var partitionValue = "example partition"
 
-        Log.v("QUICKSTART", "Openning Realm. The chat room is: " + this.chatRoom)
+        Log.v("QUICKSTART", "Opening Realm. The chat room is: " + this.chatRoom)
         val config = SyncConfiguration.Builder(user!!, partitionValue)
             // because this application only reads/writes small amounts of data, it's OK to read/write from the UI thread
             .allowWritesOnUiThread(true)

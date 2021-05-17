@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.mongodb.realm.mongodblivechat.databinding.ChatFragmentBinding
 import com.mongodb.realm.mongodblivechat.model.ChatModel
-import kotlinx.android.synthetic.main.chat_fragment.view.*
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
@@ -20,7 +19,7 @@ import com.mongodb.realm.mongodblivechat.model.ChatMessage
  */
 class ChatFragment : Fragment() {
 
-    lateinit var binding:ChatFragmentBinding
+    private lateinit var binding:ChatFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +32,7 @@ class ChatFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
         }
         //binding.root.sendMessageButton.setOnClickListener(){
-        binding.sendMessageButton.setOnClickListener(){
+        binding.sendMessageButton.setOnClickListener{
             Log.v("QUICKSTART", "Running on click listener")
             model.sendMessage()
             this.sendMessage()
@@ -41,7 +40,7 @@ class ChatFragment : Fragment() {
 
         binding.switchRoomButton.setOnClickListener{
             val action : ChatFragmentDirections.ActionBackToChatFragmentToChatRoomSelect= ChatFragmentDirections.actionBackToChatFragmentToChatRoomSelect()
-            action.setEmail(binding.myChatModel!!.chatUser)
+            action.email = binding.myChatModel!!.chatUser
             Navigation.findNavController(it).navigate(action)
             model.closeRealm()
         }
@@ -55,9 +54,9 @@ class ChatFragment : Fragment() {
 
     }
 */
-    fun sendMessage() {
+    private fun sendMessage() {
         Log.v("QUICKSTART", "Clearing text box")
-        binding.enterMessageBox.getText().clear()
+        binding.enterMessageBox.text.clear()
     }
 
     override fun onStart() {
@@ -66,7 +65,7 @@ class ChatFragment : Fragment() {
         arguments?.let {
             val args = ChatFragmentArgs.fromBundle(it)
 
-            this.binding.getMyChatModel()!!.connToRealmApp(args.email, args.chatRoom)
+            this.binding.myChatModel!!.connToRealmApp(args.email, args.chatRoom)
 
             val messageObserver = Observer<List<ChatMessage>?> {
                     cMessages ->
