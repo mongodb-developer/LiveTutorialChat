@@ -9,7 +9,6 @@ import io.realm.mongodb.App
 import io.realm.mongodb.AppConfiguration
 
 lateinit var chatApp: App
-private val appID = "mongodb-live-chat-pzxfo"
 
 class MainActivity : AppCompatActivity(){
 
@@ -21,7 +20,7 @@ class MainActivity : AppCompatActivity(){
 
         // 1. connect to the MongoDB Realm app backend
         chatApp = App(
-            AppConfiguration.Builder(appID)
+            AppConfiguration.Builder(BuildConfig.REALM_APP_ID)
                 .build()
         )
     }

@@ -33,13 +33,13 @@ class ChatFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
         }
         //binding.root.sendMessageButton.setOnClickListener(){
-        binding.root.sendMessageButton.setOnClickListener(){
+        binding.sendMessageButton.setOnClickListener(){
             Log.v("QUICKSTART", "Running on click listener")
             model.sendMessage()
             this.sendMessage()
         }
 
-        binding.root.switchRoomButton.setOnClickListener{
+        binding.switchRoomButton.setOnClickListener{
             val action : ChatFragmentDirections.ActionBackToChatFragmentToChatRoomSelect= ChatFragmentDirections.actionBackToChatFragmentToChatRoomSelect()
             action.setEmail(binding.myChatModel!!.chatUser)
             Navigation.findNavController(it).navigate(action)
@@ -57,19 +57,21 @@ class ChatFragment : Fragment() {
 */
     fun sendMessage() {
         Log.v("QUICKSTART", "Clearing text box")
-        binding.root.enterMessageBox.getText().clear()
+        binding.enterMessageBox.getText().clear()
     }
 
     override fun onStart() {
         super.onStart()
-
+        
         arguments?.let {
             val args = ChatFragmentArgs.fromBundle(it)
 
             this.binding.getMyChatModel()!!.connToRealmApp(args.email, args.chatRoom)
 
             val messageObserver = Observer<List<ChatMessage>?> {
-                    cMessages -> binding.myChatModel?.setMessageHistoryText(cMessages)
+                    cMessages ->
+                binding.myChatModel?.setMessageHistoryText(cMessages)
+                Log.v("QUICKSTART", "Updating message history list")
             }
 
             binding.myChatModel?._chatMessages?.observe(viewLifecycleOwner, messageObserver)

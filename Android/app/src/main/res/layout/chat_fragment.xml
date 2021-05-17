@@ -8,9 +8,6 @@
         <variable
             name="myChatModel"
             type="com.mongodb.realm.mongodblivechat.model.ChatModel" />
-        <variable
-            name="uiController"
-            type="com.mongodb.realm.mongodblivechat.ChatFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
