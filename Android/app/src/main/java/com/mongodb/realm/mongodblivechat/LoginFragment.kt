@@ -34,7 +34,8 @@ class LoginFragment : Fragment() {
 
             val view = it
 
-            chatApp.loginAsync(Credentials.emailPassword(eMail, pWord)) {
+            (requireActivity().application as LiveChatApplication)
+                .chatApp.loginAsync(Credentials.emailPassword(eMail, pWord)) {
                 if (it.isSuccess) {
                     Log.v("QUICKSTART", "Successfully logged in Email: $eMail, Password: $pWord")
 

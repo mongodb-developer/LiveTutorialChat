@@ -10,6 +10,8 @@ import com.mongodb.realm.mongodblivechat.databinding.ChatFragmentBinding
 import com.mongodb.realm.mongodblivechat.model.ChatModel
 import android.util.Log
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.mongodb.realm.mongodblivechat.model.ChatMessage
 
@@ -21,11 +23,21 @@ class ChatFragment : Fragment() {
 
     private lateinit var binding:ChatFragmentBinding
 
+    val model: ChatModel by viewModels(factoryProducer = {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                val realmApp = (requireActivity().application as LiveChatApplication).chatApp
+                return ChatModel(realmApp) as T
+            }
+        }
+    })
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?): View {
-        val model: ChatModel by viewModels()
+
 
         binding = ChatFragmentBinding.inflate(inflater, container, false).apply {
             myChatModel = model

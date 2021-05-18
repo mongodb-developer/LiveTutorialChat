@@ -7,32 +7,34 @@ import io.realm.kotlin.where
 import io.realm.mongodb.User
 import io.realm.mongodb.sync.SyncConfiguration
 import androidx.lifecycle.MutableLiveData
-import com.mongodb.realm.mongodblivechat.chatApp
+import io.realm.mongodb.App
 
-class ChatModel : ViewModel() {
+class ChatModel(private val chatApp: App) : ViewModel() {
 
     private var realm: Realm? = null
     var chatUser = ""
     var chatRoom = ""
 
-    var _chatMessages : LiveRealmResults<ChatMessage>? = null
+    var _chatMessages: LiveRealmResults<ChatMessage>? = null
 
     var messageText = "" //maps to send message text box in UI
-    var messageHistory : MutableLiveData<String> = MutableLiveData()
-
+    var messageHistory: MutableLiveData<String> = MutableLiveData()
 
 
     fun sendMessage() {
         val msg = ChatMessage(rm = this.chatRoom, user = this.chatUser, msg = this.messageText)
-        this.realm?.executeTransaction{ transactionRealm ->
+        this.realm?.executeTransaction { transactionRealm ->
             transactionRealm.insert(msg)
-            Log.v("QUICKSTART", "\"$messageText\" inserted in Room: ${this.chatRoom} for user: ${this.chatUser}")
-         }
+            Log.v(
+                "QUICKSTART",
+                "\"$messageText\" inserted in Room: ${this.chatRoom} for user: ${this.chatUser}"
+            )
+        }
         this.messageText = ""
     }
 
 
-    fun setMessageHistoryText(msgs : List<ChatMessage> ) {
+    fun setMessageHistoryText(msgs: List<ChatMessage>) {
         //return "first message \n, second message \n"
         var messageStr = ""
 
@@ -52,7 +54,7 @@ class ChatModel : ViewModel() {
 
 
     private fun openRealm() {
-        val user: User? =  chatApp.currentUser()
+        val user: User? = chatApp.currentUser()
         val partitionValue = this.chatRoom
         //var partitionValue = "example partition"
 
@@ -75,7 +77,7 @@ class ChatModel : ViewModel() {
         this.realm?.close()
     }
 
-    fun connToRealmApp (enteredEmail: String, selectedChatRoom: String) {
+    fun connToRealmApp(enteredEmail: String, selectedChatRoom: String) {
 
         this.chatUser = enteredEmail
         this.chatRoom = selectedChatRoom

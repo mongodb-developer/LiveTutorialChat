@@ -8,9 +8,8 @@ import io.realm.Realm
 import io.realm.mongodb.App
 import io.realm.mongodb.AppConfiguration
 
-lateinit var chatApp: App
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,11 +17,6 @@ class MainActivity : AppCompatActivity(){
         setSupportActionBar(findViewById(R.id.toolbar))
         Realm.init(this) // context, usually an Activity or Application
 
-        // 1. connect to the MongoDB Realm app backend
-        chatApp = App(
-            AppConfiguration.Builder(BuildConfig.REALM_APP_ID)
-                .build()
-        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
