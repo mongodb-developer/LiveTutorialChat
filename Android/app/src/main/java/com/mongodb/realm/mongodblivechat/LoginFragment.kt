@@ -22,26 +22,26 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        //TODO: [STEP 1] - Complete code for loginButton on click listener action
+        //TODO: [STEP 2] - Complete code for loginButton on click listener action
         //This listener should perform the following tasks
         //Use the email and password entered into the respective text boxes to authenticate the user
         // - If authentication is successful, then the UI should navigate to the ChatRoomSelect fragment
         // - If authentication fails, then an error message should be displayed and the UI should not switch screens
         loginButton.setOnClickListener{
-            //TODO: [STEP 1] - Complete this
             val eMail = editTextEmailAddress.text.toString()
             val pWord = editTextPassword.text.toString()
 
             val view = it
-
+            
+            //TODO: [STEP 2] - Complete loginButton onclick listener
             (requireActivity().application as LiveChatApplication)
                 .chatApp.loginAsync(Credentials.emailPassword(eMail, pWord)) {
                 if (it.isSuccess) {
                     Log.v("QUICKSTART", "Successfully logged in Email: $eMail, Password: $pWord")
 
                     val action : ActionLoginFragmentToChatRoomFragment = LoginFragmentDirections.actionLoginFragmentToChatRoomFragment()
-                    action.setEmail(editTextEmailAddress.text.toString())
-                    action.setPassword(editTextPassword.text.toString())
+                    action.email = editTextEmailAddress.text.toString()
+                    action.password = editTextPassword.text.toString()
                     Navigation.findNavController(view).navigate(action)
                 } else {
                     val eMsg = "Failed to log $eMail. Error: ${it.error.message}"
@@ -60,7 +60,7 @@ class LoginFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
-    fun setErrorMsg(email : String) {
+    private fun setErrorMsg(email : String) {
         val errMsg : String = getString(failedLoginMessage, email)
         errorMsgBox.text = errMsg
     }

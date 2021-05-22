@@ -15,11 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
+
         //TODO: [Step 0a] - Initialize Realm
-
-
-        //TODO: [Step 0b] - connect to the MongoDB Realm app backend
-
+        Realm.init(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

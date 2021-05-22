@@ -6,6 +6,7 @@ import io.realm.mongodb.AppConfiguration
 
 class LiveChatApplication : Application() {
 
+    //TODO: [Step 0b] - connect to the MongoDB Realm app backend
     val chatApp: App by lazy {
         App(AppConfiguration.Builder(BuildConfig.REALM_APP_ID).build())
     }
