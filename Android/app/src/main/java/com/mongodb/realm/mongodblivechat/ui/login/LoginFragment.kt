@@ -11,7 +11,7 @@ import com.mongodb.realm.mongodblivechat.LiveChatApplication
 import com.mongodb.realm.mongodblivechat.ui.login.LoginFragmentDirections.ActionLoginFragmentToChatRoomFragment
 import com.mongodb.realm.mongodblivechat.R
 import io.realm.mongodb.Credentials
-import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.login_fragment.*
 import com.mongodb.realm.mongodblivechat.R.string.failedLoginMessage as failedLoginMessage
 
 
@@ -60,7 +60,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        return inflater.inflate(R.layout.login_fragment, container, false)
     }
 
     private fun setErrorMsg(email : String) {

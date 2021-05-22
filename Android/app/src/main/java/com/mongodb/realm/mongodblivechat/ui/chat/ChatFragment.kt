@@ -22,11 +22,11 @@ class ChatFragment : Fragment() {
 
     private lateinit var binding:ChatFragmentBinding
 
-    val model: ChatModel by viewModels(factoryProducer = {
+    val model: ChatViewModel by viewModels(factoryProducer = {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 val realmApp = (requireActivity().application as LiveChatApplication).chatApp
-                return ChatModel(realmApp) as T
+                return ChatViewModel(realmApp) as T
             }
         }
     })
@@ -50,8 +50,8 @@ class ChatFragment : Fragment() {
         }
 
         binding.switchRoomButton.setOnClickListener{
-            val action : com.mongodb.realm.mongodblivechat.ui.chat.ChatFragmentDirections.ActionBackToChatFragmentToChatRoomSelect =
-                com.mongodb.realm.mongodblivechat.ui.chat.ChatFragmentDirections.actionBackToChatFragmentToChatRoomSelect()
+            val action : ChatFragmentDirections.ActionBackToChatFragmentToChatRoomSelect =
+                ChatFragmentDirections.actionBackToChatFragmentToChatRoomSelect()
             action.email = binding.myChatModel!!.chatUser
             Navigation.findNavController(it).navigate(action)
             model.closeRealm()

@@ -7,7 +7,7 @@
     <data android:id="@+id/data">
         <variable
             name="myChatModel"
-            type="com.mongodb.realm.mongodblivechat.ui.chat.ChatModel" />
+            type="com.mongodb.realm.mongodblivechat.ui.chat.ChatViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

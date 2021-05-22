@@ -11,7 +11,7 @@ import com.mongodb.realm.mongodblivechat.realmsync.ChatMessage
 import com.mongodb.realm.mongodblivechat.realmsync.LiveRealmResults
 import io.realm.mongodb.App
 
-class ChatModel(private val chatApp: App) : ViewModel() {
+class ChatViewModel(private val chatApp: App) : ViewModel() {
 
     private var realm: Realm? = null
     var chatUser = ""

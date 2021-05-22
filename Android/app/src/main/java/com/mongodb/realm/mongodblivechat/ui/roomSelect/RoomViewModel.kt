@@ -2,7 +2,7 @@ package com.mongodb.realm.mongodblivechat.ui.roomSelect
 
 import androidx.lifecycle.ViewModel
 
-class RoomModel : ViewModel() {
+class RoomViewModel : ViewModel() {
     var chatUser = ""
     var chatRoom = ""
 }

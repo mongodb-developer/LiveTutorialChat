@@ -8,16 +8,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 
-import com.mongodb.realm.mongodblivechat.ui.roomSelect.ChatRoomSelectDirections.ActionChatRoomSelectToChatFragment
-import kotlinx.android.synthetic.main.fragment_chat_room_select.*
-import com.mongodb.realm.mongodblivechat.databinding.FragmentChatRoomSelectBinding
+import com.mongodb.realm.mongodblivechat.ui.roomSelect.ChatRoomSelectFragmentDirections.ActionChatRoomSelectToChatFragment
+import kotlinx.android.synthetic.main.chat_room_select_fragment.*
+import com.mongodb.realm.mongodblivechat.databinding.ChatRoomSelectFragmentBinding
 
 /**
  * A simple [Fragment] subclass.
  */
-class ChatRoomSelect : Fragment() {
+class ChatRoomSelectFragment : Fragment() {
 
-    lateinit var binding:FragmentChatRoomSelectBinding
+    lateinit var binding:ChatRoomSelectFragmentBinding
 
     private var email: String? = null
 
@@ -63,7 +63,7 @@ class ChatRoomSelect : Fragment() {
 
     fun openChatWindow(view: View, email: String, room: String) {
         val action : ActionChatRoomSelectToChatFragment =
-            com.mongodb.realm.mongodblivechat.ui.roomSelect.ChatRoomSelectDirections.actionChatRoomSelectToChatFragment()
+            com.mongodb.realm.mongodblivechat.ui.roomSelect.ChatRoomSelectFragmentDirections.actionChatRoomSelectToChatFragment()
         action.setEmail(email)
         action.setChatRoom(room)
         Navigation.findNavController(view).navigate(action)
@@ -71,12 +71,12 @@ class ChatRoomSelect : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        val model : RoomModel by viewModels()
+        val model : RoomViewModel by viewModels()
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_chat_room_select, container, false)
 
 
-        binding = FragmentChatRoomSelectBinding.inflate(inflater, container, false).apply {
+        binding = ChatRoomSelectFragmentBinding.inflate(inflater, container, false).apply {
             roomModel = model
             lifecycleOwner = viewLifecycleOwner
         }
