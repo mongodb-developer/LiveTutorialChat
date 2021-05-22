@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/ChatFragment"
-        android:name="com.mongodb.realm.mongodblivechat.ChatFragment"
+        android:name="com.mongodb.realm.mongodblivechat.ui.chat.ChatFragment"
         android:label="@string/fragment_label"
         tools:layout="@layout/chat_fragment">
         <argument
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.mongodb.realm.mongodblivechat.LoginFragment"
+        android:name="com.mongodb.realm.mongodblivechat.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatRoomSelect"
-        android:name="com.mongodb.realm.mongodblivechat.ChatRoomSelect"
+        android:name="com.mongodb.realm.mongodblivechat.ui.roomSelect.ChatRoomSelect"
         android:label="fragment_chat_room_select"
         tools:layout="@layout/fragment_chat_room_select" >
         <argument

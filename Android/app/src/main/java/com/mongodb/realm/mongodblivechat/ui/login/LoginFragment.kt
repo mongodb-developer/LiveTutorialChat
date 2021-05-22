@@ -1,4 +1,4 @@
-package com.mongodb.realm.mongodblivechat
+package com.mongodb.realm.mongodblivechat.ui.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.util.Log
 import androidx.navigation.Navigation
-import com.mongodb.realm.mongodblivechat.LoginFragmentDirections.ActionLoginFragmentToChatRoomFragment
+import com.mongodb.realm.mongodblivechat.LiveChatApplication
+import com.mongodb.realm.mongodblivechat.ui.login.LoginFragmentDirections.ActionLoginFragmentToChatRoomFragment
+import com.mongodb.realm.mongodblivechat.R
 import io.realm.mongodb.Credentials
 import kotlinx.android.synthetic.main.fragment_login.*
 import com.mongodb.realm.mongodblivechat.R.string.failedLoginMessage as failedLoginMessage
@@ -32,14 +34,15 @@ class LoginFragment : Fragment() {
             val pWord = editTextPassword.text.toString()
 
             val view = it
-            
+
             //TODO: [STEP 2] - Complete loginButton onclick listener
             (requireActivity().application as LiveChatApplication)
                 .chatApp.loginAsync(Credentials.emailPassword(eMail, pWord)) {
                 if (it.isSuccess) {
                     Log.v("QUICKSTART", "Successfully logged in Email: $eMail, Password: $pWord")
 
-                    val action : ActionLoginFragmentToChatRoomFragment = LoginFragmentDirections.actionLoginFragmentToChatRoomFragment()
+                    val action : ActionLoginFragmentToChatRoomFragment =
+                        com.mongodb.realm.mongodblivechat.ui.login.LoginFragmentDirections.actionLoginFragmentToChatRoomFragment()
                     action.email = editTextEmailAddress.text.toString()
                     action.password = editTextPassword.text.toString()
                     Navigation.findNavController(view).navigate(action)

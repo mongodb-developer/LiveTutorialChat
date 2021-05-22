@@ -1,4 +1,4 @@
-package com.mongodb.realm.mongodblivechat.model
+package com.mongodb.realm.mongodblivechat.realmsync
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LiveData

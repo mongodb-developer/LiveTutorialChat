@@ -1,4 +1,4 @@
-package com.mongodb.realm.mongodblivechat.model
+package com.mongodb.realm.mongodblivechat.ui.chat
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -7,6 +7,8 @@ import io.realm.kotlin.where
 import io.realm.mongodb.User
 import io.realm.mongodb.sync.SyncConfiguration
 import androidx.lifecycle.MutableLiveData
+import com.mongodb.realm.mongodblivechat.realmsync.ChatMessage
+import com.mongodb.realm.mongodblivechat.realmsync.LiveRealmResults
 import io.realm.mongodb.App
 
 class ChatModel(private val chatApp: App) : ViewModel() {

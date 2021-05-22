@@ -7,14 +7,14 @@
 
         <variable
             name="roomModel"
-            type="com.mongodb.realm.mongodblivechat.model.RoomModel" />
+            type="com.mongodb.realm.mongodblivechat.ui.roomSelect.RoomModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ChatRoomSelect">
+        tools:context=".ui.roomSelect.ChatRoomSelect">
 
         <Button
             android:id="@+id/serverButton"

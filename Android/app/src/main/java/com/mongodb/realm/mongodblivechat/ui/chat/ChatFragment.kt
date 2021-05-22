@@ -1,4 +1,4 @@
-package com.mongodb.realm.mongodblivechat
+package com.mongodb.realm.mongodblivechat.ui.chat
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,14 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.mongodb.realm.mongodblivechat.databinding.ChatFragmentBinding
-import com.mongodb.realm.mongodblivechat.model.ChatModel
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.mongodb.realm.mongodblivechat.model.ChatMessage
-
+import com.mongodb.realm.mongodblivechat.LiveChatApplication
+import com.mongodb.realm.mongodblivechat.realmsync.ChatMessage
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -40,7 +39,7 @@ class ChatFragment : Fragment() {
 
 
         binding = ChatFragmentBinding.inflate(inflater, container, false).apply {
-            myChatModel = model
+            this.myChatModel = model
             lifecycleOwner = viewLifecycleOwner
         }
         //binding.root.sendMessageButton.setOnClickListener(){
@@ -51,7 +50,8 @@ class ChatFragment : Fragment() {
         }
 
         binding.switchRoomButton.setOnClickListener{
-            val action : ChatFragmentDirections.ActionBackToChatFragmentToChatRoomSelect= ChatFragmentDirections.actionBackToChatFragmentToChatRoomSelect()
+            val action : com.mongodb.realm.mongodblivechat.ui.chat.ChatFragmentDirections.ActionBackToChatFragmentToChatRoomSelect =
+                com.mongodb.realm.mongodblivechat.ui.chat.ChatFragmentDirections.actionBackToChatFragmentToChatRoomSelect()
             action.email = binding.myChatModel!!.chatUser
             Navigation.findNavController(it).navigate(action)
             model.closeRealm()
@@ -75,9 +75,10 @@ class ChatFragment : Fragment() {
         super.onStart()
         
         arguments?.let {
-            val args = ChatFragmentArgs.fromBundle(it)
+            val args = com.mongodb.realm.mongodblivechat.ui.chat.ChatFragmentArgs.fromBundle(it)
 
             this.binding.myChatModel!!.connToRealmApp(args.email, args.chatRoom)
+
 
             //TODO: [Step 4c] - Set up observer for ChatMessage list changes
             val messageObserver = Observer<List<ChatMessage>?> {

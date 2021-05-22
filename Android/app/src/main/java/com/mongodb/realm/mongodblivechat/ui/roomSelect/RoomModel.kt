@@ -1,4 +1,4 @@
-package com.mongodb.realm.mongodblivechat.model
+package com.mongodb.realm.mongodblivechat.ui.roomSelect
 
 import androidx.lifecycle.ViewModel
 
