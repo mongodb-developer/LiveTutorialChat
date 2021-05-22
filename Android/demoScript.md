@@ -31,12 +31,6 @@ Steps
 	    * Step 4c - Set up observer for ChatMessage list changes		
 
 
-Steps
-  * one
-  * two
-  * three
-
-
 
 [Step 0] MainActivity.kt
 ================================================================
@@ -119,4 +113,16 @@ Realm.init(this) // context, usually an Activity or Application
 ```
 ```
         setMessageHistoryText(_chatMessages!!.value!!)
+```
+
+[Step 4c] ChatFragment.kt
+================================================================
+```
+	            val messageObserver = Observer<List<ChatMessage>?> {
+                    cMessages ->
+                binding.myChatModel?.setMessageHistoryText(cMessages)
+                Log.v("QUICKSTART", "Updating message history list")
+            }
+
+            binding.myChatModel?._chatMessages?.observe(viewLifecycleOwner, messageObserver)
 ```

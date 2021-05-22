@@ -31,8 +31,8 @@ class ChatRoomSelectFragment : Fragment() {
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         serverButton.setOnClickListener{
             binding.roomModel?.chatRoom = "Atlas"
@@ -58,7 +58,6 @@ class ChatRoomSelectFragment : Fragment() {
             binding.roomModel?.chatRoom = "Atlas"
             openChatWindow(it, binding.roomModel?.chatUser.toString(), binding.roomModel?.chatRoom.toString())
         }
-
     }
 
     fun openChatWindow(view: View, email: String, room: String) {
