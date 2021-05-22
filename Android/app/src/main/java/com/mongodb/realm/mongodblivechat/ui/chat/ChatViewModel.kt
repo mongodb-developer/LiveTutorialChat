@@ -36,15 +36,15 @@ class ChatViewModel(private val chatApp: App) : ViewModel() {
     }
 
 
-    fun setMessageHistoryText(msgs: List<ChatMessage>) {
+    fun setMessageHistoryText(msgs: List<ChatMessage>?) {
         //return "first message \n, second message \n"
         var messageStr = ""
 
         //val msgs : RealmResults<ChatMessage> = this.realm?.where<ChatMessage>()!!.findAll()
-
-
-        for (msg in msgs) {
-            messageStr = messageStr + "[" + msg.getAuthorName() + "] " + msg.text + "\n"
+        msgs?.let {
+            for (msg in it) {
+                messageStr = messageStr + "[" + msg.getAuthorName() + "] " + msg.text + "\n"
+            }
         }
 
         messageHistory.value = messageStr
@@ -75,7 +75,9 @@ class ChatViewModel(private val chatApp: App) : ViewModel() {
         _chatMessages = LiveRealmResults(realm?.where<ChatMessage>()!!.findAll().sort("timestamp"))
 
         //TODO: [Step 4b] Update chat history text box based upon ChatMessages
-        setMessageHistoryText(_chatMessages!!.value!!)
+        _chatMessages?.let{
+            setMessageHistoryText(it.value)
+        }
     }
 
     fun closeRealm() {
