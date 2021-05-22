@@ -59,18 +59,17 @@ class ChatModel(private val chatApp: App) : ViewModel() {
         //var partitionValue = "example partition"
 
         Log.v("QUICKSTART", "Opening Realm. The chat room is: " + this.chatRoom)
-        val config = SyncConfiguration.Builder(user!!, partitionValue)
-            // because this application only reads/writes small amounts of data, it's OK to read/write from the UI thread
-            .allowWritesOnUiThread(true)
-            .allowQueriesOnUiThread(true)
-            .build()
+        //TODO: [Step 3a] Configure realm
 
-        // open the realm
-        this.realm = Realm.getInstance(config)
 
-        _chatMessages = LiveRealmResults(realm?.where<ChatMessage>()!!.findAll().sort("timestamp"))
+        //TODO: [Step 3b] Open the realm
 
-        setMessageHistoryText(_chatMessages!!.value!!)
+
+        //TODO: [Step 4a] Populate _chatMessages with the ChatMessages in the realm (chat room)
+
+
+        //TODO: [Step 4b] Update chat history text box based upon ChatMessages
+
     }
 
     fun closeRealm() {

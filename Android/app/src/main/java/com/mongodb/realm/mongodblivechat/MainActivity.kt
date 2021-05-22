@@ -15,7 +15,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
-        Realm.init(this) // context, usually an Activity or Application
+        //TODO: [Step 0a] - Initialize Realm
+
+
+        //TODO: [Step 0b] - connect to the MongoDB Realm app backend
 
     }
 
