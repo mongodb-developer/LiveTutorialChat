@@ -14,7 +14,7 @@ struct ChatsView: View {
     let username: String
     let room: String
     
-    @State var message = ""
+    @State private var message = ""
     
     var body: some View {
         VStack {
