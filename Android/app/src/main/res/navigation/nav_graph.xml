@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/ChatFragment"
+        android:name="com.mongodb.realm.mongodblivechat.ui.chat.ChatFragment"
+        android:label="@string/fragment_label"
+        tools:layout="@layout/chat_fragment">
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="NoEmail" />
+        <argument
+            android:name="chatRoom"
+            app:argType="string"
+            android:defaultValue="Everyone"/>
+        <action
+            android:id="@+id/action_backTo_ChatFragment_to_chatRoomSelect"
+            app:destination="@id/chatRoomSelect" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.mongodb.realm.mongodblivechat.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_ChatRoomFragment"
+            app:destination="@id/chatRoomSelect" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatRoomSelect"
+        android:name="com.mongodb.realm.mongodblivechat.ui.roomSelect.ChatRoomSelectFragment"
+        android:label="fragment_chat_room_select"
+        tools:layout="@layout/chat_room_select_fragment" >
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="NoEmail" />
+        <argument
+            android:name="password"
+            app:argType="string"
+            android:defaultValue=""/>
+        <action
+            android:id="@+id/action_chatRoomSelect_to_ChatFragment"
+            app:destination="@id/ChatFragment" />
+    </fragment>
+</navigation>

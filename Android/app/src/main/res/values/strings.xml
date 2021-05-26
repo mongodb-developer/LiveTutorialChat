@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MongoDB Live Chat</string>
+    <string name="action_settings">Settings</string>
+    <string name="login_intro_text">Enter your realm email and password</string>
+    <string name="email_label">Email:</string>
+    <string name="password_label">Password:</string>
+    <string name="enter_password_hint">Password</string>
+    <string name="enter_email_address">Email</string>
+    <string name="login_button">Login</string>
+    <string name="enter_message">Enter message</string>
+    <string name="send">Send</string>
+    <string name="EmptyMessage" />
+    <string name="serverButtonName">Server</string>
+    <string name="searchButtonName">Search</string>
+    <string name="chartsButtonName">Charts</string>
+    <string name="realmButtonName">Realm</string>
+    <string name="atlasButtonName">Atlas</string>
+    <string name="failedLoginMessage">Incorrect user name or password for user: %1$s</string>
+    <string name="roomLabelText">Room:</string>
+    <string name="switch_room_button">Switch Room</string>
+    <string name="chatRoomName">TextView</string>
+    <string name="fragment_label">ChatFragment</string>
+</resources>
