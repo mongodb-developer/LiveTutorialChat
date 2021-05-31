@@ -16,13 +16,13 @@ Steps
 		* fragment_login.xml
 		* LoginFragment.kt
 		* Step 2 - Complete loginButton onclick listener
-  6.  ChatRoomSelect
-        * fragment_chat_room_select.xml
+  6.  ChatRoomSelectFragment
+        * chat_room_select_fragment.xml
 		* ChatFragment.kt
   7.  ChatFragment
 	    * chat_fragment.xml
 		* ChatFragment.kt
-		* ChatModel.kt
+		* ChatViewModel.kt
 		* Step 3a - *Configure Realm*
 		* Step 3b - *Open the Realm*
 		* Step 4a - Populate _chatMessages with the ChatMessages in the realm (chat room)
@@ -93,7 +93,7 @@ Realm.init(this) // context, usually an Activity or Application
             }
 ```
 
-[Step 3] ChatModel.kt
+[Step 3] ChatViewModel.kt
 ================================================================
 ```
         val config = SyncConfiguration.Builder(user!!, partitionValue)
@@ -106,13 +106,15 @@ Realm.init(this) // context, usually an Activity or Application
        this.realm = Realm.getInstance(config)
 ```
 
-[Step 4ab] ChatModel.kt
+[Step 4ab] ChatViewModel.kt
 ================================================================
 ```
        _chatMessages = LiveRealmResults(realm?.where<ChatMessage>()!!.findAll().sort("timestamp"))
 ```
 ```
-        setMessageHistoryText(_chatMessages!!.value!!)
+		_chatMessages?.let{
+            setMessageHistoryText(it.value)
+        }
 ```
 
 [Step 4c] ChatFragment.kt
