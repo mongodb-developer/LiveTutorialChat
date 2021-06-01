@@ -80,7 +80,7 @@ class ChatFragment : Fragment() {
             this.binding.myChatModel!!.connToRealmApp(args.email, args.chatRoom)
 
 
-            //TODO: [Step 4c] - Set up observer for ChatMessage list changes
+            //TODO: [Step 5] - Set up observer for ChatMessage list changes
             val messageObserver = Observer<List<ChatMessage>?> {
                     cMessages ->
                 binding.myChatModel?.setMessageHistoryText(cMessages)

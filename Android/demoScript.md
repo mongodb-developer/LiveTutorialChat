@@ -27,8 +27,9 @@ Steps
 		* Step 3b - *Open the Realm*
 		* Step 4a - Populate _chatMessages with the ChatMessages in the realm (chat room)
 		* Step 4b - Update chat history text box based upon ChatMessages
+		* Step 4c - Insert new chat message into realm
 		* ChatFragment.kt
-	    * Step 4c - Set up observer for ChatMessage list changes		
+	    * Step 5 - Set up observer for ChatMessage list changes		
 
 
 
@@ -106,7 +107,7 @@ Realm.init(this) // context, usually an Activity or Application
        this.realm = Realm.getInstance(config)
 ```
 
-[Step 4ab] ChatViewModel.kt
+[Step 4abc] ChatViewModel.kt
 ================================================================
 ```
        _chatMessages = LiveRealmResults(realm?.where<ChatMessage>()!!.findAll().sort("timestamp"))
@@ -116,8 +117,17 @@ Realm.init(this) // context, usually an Activity or Application
             setMessageHistoryText(it.value)
         }
 ```
+```
+       this.realm?.executeTransaction { transactionRealm ->
+            transactionRealm.insert(msg)
+            Log.v(
+                "QUICKSTART",
+                "\"$messageText\" inserted in Room: ${this.chatRoom} for user: ${this.chatUser}"
+            )
+        }
+```
 
-[Step 4c] ChatFragment.kt
+[Step 5] ChatFragment.kt
 ================================================================
 ```
 	            val messageObserver = Observer<List<ChatMessage>?> {

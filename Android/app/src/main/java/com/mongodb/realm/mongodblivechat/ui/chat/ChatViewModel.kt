@@ -25,6 +25,8 @@ class ChatViewModel(private val chatApp: App) : ViewModel() {
 
     fun sendMessage() {
         val msg = ChatMessage(rm = this.chatRoom, user = this.chatUser, msg = this.messageText)
+
+        //TODO [Step 4c] - Insert new chat message into Realm
         this.realm?.executeTransaction { transactionRealm ->
             transactionRealm.insert(msg)
             Log.v(
