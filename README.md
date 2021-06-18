@@ -1,6 +1,6 @@
-# LiveTutorial2021
+# 45-Minute Mobile App
 
-This is the repo for the Realm, Android, and iOS apps that were built during the tutorial at MongoDB .Live 2021.
+This repo contains the finished iOS app for "LiveChat". The intent is that someone can live-code this version as part of a 45 minute presentation.
 
 ## References
 ### Common
