@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-let app = RealmSwift.App(id: "livetutorial-xxxxx")
+let app = RealmSwift.App(id: "livechat-xxxx")
 
 @main
 struct LiveChatApp: SwiftUI.App {   

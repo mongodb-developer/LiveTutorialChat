@@ -14,13 +14,6 @@ import RealmSwift
     dynamic var author = ""
     dynamic var text = ""
     dynamic var timestamp = Date()
-
-    convenience init(author: String, text: String, room: String) {
-        self.init()
-        self.author = author
-        self.text = text
-        self.room = room
-    }
     
     override static func primaryKey() -> String? {
         return "_id"
