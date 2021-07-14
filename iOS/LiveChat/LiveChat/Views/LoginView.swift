@@ -52,11 +52,16 @@ struct LoginView: View {
             }
         }
     }
-    
+  
     private func login() {
-        app.login(credentials: .emailPassword(email: email, password: password)) { _ in
+        app.login(credentials: .emailPassword(email: email, password: password)) { result in
             DispatchQueue.main.async {
-                username = email
+                switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success(_):
+                    username = email
+                }
             }
         }
     }

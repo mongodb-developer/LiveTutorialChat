@@ -25,11 +25,15 @@ struct ChatsView: View {
                         Text(chatMessage.text)
                         if chatMessage.author != username { Spacer() }
                     }
+                    .padding(4)
                 }
             }
             Spacer()
             HStack {
                 TextField("New message", text: $message)
+                    .padding(8)
+                    .background(Color.yellow)
+                    .clipShape(Capsule())
                 Button(action: send) { Image(systemName: "paperplane.fill") }
             }
         }

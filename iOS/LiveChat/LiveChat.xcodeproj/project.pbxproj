@@ -63,7 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				0A2314FE260B997700CFE607 /* LiveChatApp.swift */,
-				0A231500260B997700CFE607 /* ContentView.swift */,
 				0A231511260BAC7D00CFE607 /* Models */,
 				0A231510260BAC7000CFE607 /* Views */,
 				0A231502260B997B00CFE607 /* Assets.xcassets */,
@@ -84,6 +83,7 @@
 		0A231510260BAC7000CFE607 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A231500260B997700CFE607 /* ContentView.swift */,
 				0A231512260BADAA00CFE607 /* LoginView.swift */,
 				0A1858F9260BC06C0063C071 /* ChatRoomsView.swift */,
 				0A1858FD260CDBAE0063C071 /* ChatsView.swift */,
