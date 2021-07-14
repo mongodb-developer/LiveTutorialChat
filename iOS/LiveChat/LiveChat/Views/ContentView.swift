@@ -12,12 +12,10 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            Group {
-                if username == "" {
-                    AnonymousLoginView(username: $username)
-                } else {
-                    ChatRoomsView(username: username)
-                }
+            if username == "" {
+                AnonymousLoginView(username: $username)
+            } else {
+                ChatRoomsView(username: username)
             }
         }
     }

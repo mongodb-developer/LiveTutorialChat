@@ -11,7 +11,7 @@ struct AnonymousLoginView: View {
     @Binding var username: String
     
     var body: some View {
-        Text("Loggin in")
+        Text("Logging in")
             .onAppear(perform: anonymousLogin)
     }
     
@@ -23,7 +23,6 @@ struct AnonymousLoginView: View {
                 case .failure(let error):
                     print(error.localizedDescription)
                 case .success(let user):
-                    print(user.id)
                     username = user.id
                 }
             }
