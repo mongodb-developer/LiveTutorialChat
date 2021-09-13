@@ -9,17 +9,31 @@ import SwiftUI
 import RealmSwift
 
 struct LoginView: View {
+    
+    enum Field: Hashable {
+        case username
+        case password
+    }
+    
     @Binding var username: String
 
     @State private var email = ""
     @State private var password = ""
     @State private var newUser = false
     
+    @FocusState private var focussedField: Field?
+    
     var body: some View {
         VStack(spacing: 16) {
             Spacer()
             TextField("email address", text: $email)
+                .focused($focussedField, equals: .username)
+                .submitLabel(.next)
+                .onSubmit { focussedField = .password }
             SecureField("password", text: $password)
+                .focused($focussedField, equals: .password)
+                .onSubmit(userAction)
+                .submitLabel(.go)
             Button(action: { newUser.toggle() }) {
                 HStack {
                     Image(systemName: newUser ? "checkmark.square" : "square")
@@ -27,13 +41,17 @@ struct LoginView: View {
                     Spacer()
                 }
             }
-//            Button(role: .destructive, action: userAction) {
             Button(action: userAction) {
                 Text(newUser ? "Register new user" : "Log in")
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
             Spacer()
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                focussedField = .username
+            }
         }
         .padding()
     }
