@@ -14,6 +14,8 @@ struct ChatsView: View {
     let username: String
     let room: String
     
+    @FocusState var isTextFocussed: Bool
+    
     @State private var message = ""
     
     var body: some View {
@@ -34,6 +36,9 @@ struct ChatsView: View {
                     .padding(8)
                     .background(Color.yellow)
                     .clipShape(Capsule())
+                    .focused($isTextFocussed)
+                    .onSubmit(send)
+                    .submitLabel(.send)
                 Button(action: send) { Image(systemName: "paperplane.fill") }
             }
         }
@@ -44,6 +49,7 @@ struct ChatsView: View {
     func send() {
         $chats.append(ChatMessage(author: username, text: message, room: room))
         message = ""
+        isTextFocussed = true
     }
 }
 

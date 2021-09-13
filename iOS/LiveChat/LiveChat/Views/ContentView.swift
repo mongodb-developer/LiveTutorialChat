@@ -11,7 +11,8 @@ struct ContentView: View {
     @State private var username = ""
     
     var body: some View {
-        NavigationView {
+//        print(Self._printChanges())
+        return NavigationView {
             Group {
                 if app.currentUser == nil {
                     LoginView(username: $username)
