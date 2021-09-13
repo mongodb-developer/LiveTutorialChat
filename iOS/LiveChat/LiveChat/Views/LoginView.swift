@@ -27,9 +27,12 @@ struct LoginView: View {
                     Spacer()
                 }
             }
+//            Button(role: .destructive, action: userAction) {
             Button(action: userAction) {
                 Text(newUser ? "Register new user" : "Log in")
             }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
             Spacer()
         }
         .padding()

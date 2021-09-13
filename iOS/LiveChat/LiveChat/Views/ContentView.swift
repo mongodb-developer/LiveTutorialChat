@@ -20,16 +20,16 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle(username, displayMode: .inline)
-            .navigationBarItems(trailing: app.currentUser != nil ? Button(action: logout) { Text("Logout") } : nil) }
+            .navigationBarItems(trailing: app.currentUser != nil ? LogoutButton(username: $username) : nil) }
      }
     
-    func logout() {
-        app.currentUser?.logOut() { _ in
-            DispatchQueue.main.async {
-                username = ""
-            }
-        }
-    }
+//    func logout() {
+//        app.currentUser?.logOut() { _ in
+//            DispatchQueue.main.async {
+//                username = ""
+//            }
+//        }
+//    }
 }
 
 struct ContentView_Previews: PreviewProvider {
