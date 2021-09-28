@@ -32,7 +32,11 @@ struct LoginView: View {
                 .onSubmit { focussedField = .password }
             SecureField("password", text: $password)
                 .focused($focussedField, equals: .password)
-                .onSubmit(userAction)
+                .onSubmit() {
+                    Task {
+                        await userAction()
+                    }
+                }
                 .submitLabel(.go)
             Button(action: { newUser.toggle() }) {
                 HStack {
@@ -41,8 +45,10 @@ struct LoginView: View {
                     Spacer()
                 }
             }
-            Button(action: userAction) {
-                Text(newUser ? "Register new user" : "Log in")
+            Button(newUser ? "Register new user" : "Log in") {
+                Task {
+                    await userAction()
+                }
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
@@ -56,34 +62,29 @@ struct LoginView: View {
         .padding()
     }
     
-    func userAction() {
+    func userAction() async {
         if newUser {
-            signup()
+            await signup()
         } else {
-            login()
+            await login()
         }
     }
     
-    private func signup() {
-        app.emailPasswordAuth.registerUser(email: email, password: password) { error in
-            if let error = error {
-                print("\(error.localizedDescription)")
-            } else {
-                login()
-            }
+    private func signup() async {
+        do {
+            try await app.emailPasswordAuth.registerUser(email: email, password: password)
+            await login()
+        } catch {
+            print(error.localizedDescription)
         }
     }
   
-    private func login() {
-        app.login(credentials: .emailPassword(email: email, password: password)) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .failure(let error):
-                    print(error.localizedDescription)
-                case .success(_):
-                    username = email
-                }
-            }
+    private func login() async {
+        do {
+            let _ = try await app.login(credentials: .emailPassword(email: email, password: password))
+            username = email
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }
