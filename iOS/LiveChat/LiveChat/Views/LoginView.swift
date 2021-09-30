@@ -20,6 +20,7 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var newUser = false
+    @State private var errorMessage = ""
     
     @FocusState private var focussedField: Field?
     
@@ -32,11 +33,7 @@ struct LoginView: View {
                 .onSubmit { focussedField = .password }
             SecureField("password", text: $password)
                 .focused($focussedField, equals: .password)
-                .onSubmit() {
-                    Task {
-                        await userAction()
-                    }
-                }
+                .onSubmit(userAction)
                 .submitLabel(.go)
             Button(action: { newUser.toggle() }) {
                 HStack {
@@ -45,14 +42,14 @@ struct LoginView: View {
                     Spacer()
                 }
             }
-            Button(newUser ? "Register new user" : "Log in") {
-                Task {
-                    await userAction()
-                }
+            Button(action: userAction) {
+                Text(newUser ? "Register new user" : "Log in")
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
             Spacer()
+            Text(errorMessage)
+                .foregroundColor(.red)
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -62,29 +59,18 @@ struct LoginView: View {
         .padding()
     }
     
-    func userAction() async {
-        if newUser {
-            await signup()
-        } else {
-            await login()
-        }
-    }
-    
-    private func signup() async {
-        do {
-            try await app.emailPasswordAuth.registerUser(email: email, password: password)
-            await login()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-  
-    private func login() async {
-        do {
-            let _ = try await app.login(credentials: .emailPassword(email: email, password: password))
-            username = email
-        } catch {
-            print(error.localizedDescription)
+    func userAction() {
+        errorMessage = ""
+        Task {
+            do {
+                if newUser {
+                    try await app.emailPasswordAuth.registerUser(email: email, password: password)
+                }
+                let _ = try await app.login(credentials: .emailPassword(email: email, password: password))
+                username = password
+            } catch {
+                errorMessage = error.localizedDescription
+            }
         }
     }
 }
