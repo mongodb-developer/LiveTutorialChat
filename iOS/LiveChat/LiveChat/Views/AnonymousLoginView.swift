@@ -12,19 +12,20 @@ struct AnonymousLoginView: View {
     
     var body: some View {
         Text("Logging in")
-            .onAppear(perform: anonymousLogin)
+            .onAppear {
+                Task {
+                    anonymousLogin()
+                }
+            }
     }
     
-    
     func anonymousLogin() {
-        app.login(credentials: .anonymous) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .failure(let error):
-                    print(error.localizedDescription)
-                case .success(let user):
-                    username = user.id
-                }
+        Task {
+            do {
+                let user = try await app.login(credentials: .anonymous)
+                username = user.id
+            } catch {
+                print(error.localizedDescription)
             }
         }
     }
