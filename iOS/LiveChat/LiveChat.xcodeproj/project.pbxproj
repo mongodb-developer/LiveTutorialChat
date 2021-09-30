@@ -16,6 +16,7 @@
 		0A231506260B997B00CFE607 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A231505260B997B00CFE607 /* Preview Assets.xcassets */; };
 		0A23150F260BABDD00CFE607 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A23150E260BABDD00CFE607 /* RealmSwift */; };
 		0A231513260BADAA00CFE607 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A231512260BADAA00CFE607 /* LoginView.swift */; };
+		0AC8E21126EF7180006EF60C /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8E21026EF7180006EF60C /* LogoutButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		0A231505260B997B00CFE607 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A231507260B997B00CFE607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A231512260BADAA00CFE607 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0AC8E21026EF7180006EF60C /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				0A231512260BADAA00CFE607 /* LoginView.swift */,
 				0A1858F9260BC06C0063C071 /* ChatRoomsView.swift */,
 				0A1858FD260CDBAE0063C071 /* ChatsView.swift */,
+				0AC8E21026EF7180006EF60C /* LogoutButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1858FE260CDBAE0063C071 /* ChatsView.swift in Sources */,
+				0AC8E21126EF7180006EF60C /* LogoutButton.swift in Sources */,
 				0A231513260BADAA00CFE607 /* LoginView.swift in Sources */,
 				0A1858FA260BC06C0063C071 /* ChatRoomsView.swift in Sources */,
 				0A231501260B997700CFE607 /* ContentView.swift in Sources */,
@@ -237,7 +241,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -292,7 +296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -312,7 +316,7 @@
 				DEVELOPMENT_TEAM = CV5PJSAH7N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LiveChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,7 +338,7 @@
 				DEVELOPMENT_TEAM = CV5PJSAH7N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LiveChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -375,7 +379,7 @@
 			repositoryURL = "https://github.com/realm/realm-cocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.7.6;
+				minimumVersion = 10.15.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
