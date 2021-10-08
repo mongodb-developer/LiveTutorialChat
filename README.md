@@ -3,6 +3,9 @@
 This repo contains the finished iOS app for "LiveChat". The intent is that someone can live-code this version as part of a 45 minute presentation.
 
 ## References
+
+- [Slide deck from DevoxxUK 2021](https://docs.google.com/presentation/d/1wARKpTV7F1ykZETxxVYVKxRDk6GHe1KgvyHGR_siDq8/edit#slide=id.gc8d4a23972_0_7)
+
 ### Common
 - [Realm tutorials](https://docs.mongodb.com/realm/sdk/)
 - [MongoDB/Realm Community Forum](https://developer.mongodb.com/community/forums/)
