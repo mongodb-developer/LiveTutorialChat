@@ -67,7 +67,7 @@ struct LoginView: View {
                     try await app.emailPasswordAuth.registerUser(email: email, password: password)
                 }
                 let _ = try await app.login(credentials: .emailPassword(email: email, password: password))
-                username = password
+                username = email
             } catch {
                 errorMessage = error.localizedDescription
             }
