@@ -3,6 +3,7 @@
 This is the repo for the Realm, Android, and iOS apps that were built during the tutorial at MongoDB .Live 2021.
 
 ## References
+- [Slides from MongoDB .local London 2021](https://docs.google.com/presentation/d/1s4mghiqOpsKRTNgqPdTq63Lv3XPAtIbjk8ZM9H7P2lQ/)
 ### Common
 - [Realm tutorials](https://docs.mongodb.com/realm/sdk/)
 - [MongoDB/Realm Community Forum](https://developer.mongodb.com/community/forums/)
