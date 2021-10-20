@@ -24,9 +24,12 @@ struct LogoutButton: View {
     }
                      
     private func logout() {
-        app.currentUser?.logOut() { _ in
-            DispatchQueue.main.async {
+        Task {
+            do {
+                try await app.currentUser?.logOut()
                 username = ""
+            } catch {
+                print("Failed to logout: \(error.localizedDescription)")
             }
         }
     }

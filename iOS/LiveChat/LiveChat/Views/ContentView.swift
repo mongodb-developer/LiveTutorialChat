@@ -13,14 +13,14 @@ struct ContentView: View {
     var body: some View {
         return NavigationView {
             Group {
-                if app.currentUser == nil {
+                if username == "" {
                     LoginView(username: $username)
                 } else {
                     ChatRoomsView(username: username)
                 }
             }
             .navigationBarTitle(username, displayMode: .inline)
-            .navigationBarItems(trailing: app.currentUser != nil ? LogoutButton(username: $username) : nil) }
+            .navigationBarItems(trailing: username != "" ? LogoutButton(username: $username) : nil) }
      }
 }
 
