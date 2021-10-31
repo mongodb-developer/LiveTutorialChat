@@ -2,6 +2,11 @@
 
 This repo contains the finished iOS app for "LiveChat". The intent is that someone can live-code this version as part of a 45 minute presentation.
 
+## 75% Discount for MDB.local London (now £12.50)
+- Tuesday 9th November 2021
+- [Register here](https://events.mongodb.com/dotlocallondon)
+- Use discount code `MORGAN75`
+
 ## References
 
 - [Slide deck from DevoxxUK 2021](https://docs.google.com/presentation/d/1wARKpTV7F1ykZETxxVYVKxRDk6GHe1KgvyHGR_siDq8/edit#slide=id.gc8d4a23972_0_7)
