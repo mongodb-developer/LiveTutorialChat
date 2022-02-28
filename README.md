@@ -7,6 +7,7 @@ This is the repo for the Realm, Android, and iOS apps that were built during the
 - [Realm Mobile on the DevHub](https://www.mongodb.com/developer/learn/?products=Mobile)
 - [Realm tutorials](https://docs.mongodb.com/realm/sdk/)
 - [MongoDB/Realm Community Forum](https://developer.mongodb.com/community/forums/)
+- [Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync](https://www.mongodb.com/developer/article/realm-flexible-sync/)
 
 ### iOS
 - [Apple's Swift/SwiftUI tutorial (developing the Scrumdinger app)](https://developer.apple.com/tutorials/app-dev-training)
@@ -18,6 +19,6 @@ This is the repo for the Realm, Android, and iOS apps that were built during the
 - [Migrating Your iOS App's Realm Schema in Production](https://www.mongodb.com/developer/how-to/realm-schema-migration/)
 - [Migrating Your iOS App's Synced Realm Schema in Production](https://www.mongodb.com/developer/how-to/realm-sync-migration/)
 - [Most Useful iOS 15 SwiftUI Features](https://www.mongodb.com/developer/how-to/realm-ios15-swiftui/)
-
-### Android
-- “Android Studio 4.1 Development Essentials”, Neil Smith
+- [Using Realm Flexible Sync in Your App—an iOS Tutorial](https://www.mongodb.com/developer/how-to/realm-flex-sync-tutorial)
+- [Realm-Swift Type Projections](https://www.mongodb.com/developer/how-to/type-projections/)
+- [Goodbye NSPredicate, hello Realm Swift Query API](https://www.mongodb.com/developer/how-to/realm-swift-query-api/)
