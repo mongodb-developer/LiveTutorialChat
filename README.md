@@ -1,6 +1,6 @@
-# LiveTutorial2021
+# LiveTutorialChat
 
-This is the repo for the Realm, Android, and iOS apps that were built during the tutorial at MongoDB .Live 2021.
+This is the repo for the Realm, Android, and iOS apps that we use in teaching developers to write their first mobile app.
 
 ## References
 ### Common
@@ -22,3 +22,4 @@ This is the repo for the Realm, Android, and iOS apps that were built during the
 - [Using Realm Flexible Sync in Your App—an iOS Tutorial](https://www.mongodb.com/developer/how-to/realm-flex-sync-tutorial)
 - [Realm-Swift Type Projections](https://www.mongodb.com/developer/how-to/type-projections/)
 - [Goodbye NSPredicate, hello Realm Swift Query API](https://www.mongodb.com/developer/how-to/realm-swift-query-api/)
+- [Building a collaborative iOS Minesweeper game with Realm](https://www.mongodb.com/developer/how-to/realm-minesweeper/)
