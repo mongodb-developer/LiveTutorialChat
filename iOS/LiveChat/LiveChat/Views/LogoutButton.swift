@@ -16,8 +16,8 @@ struct LogoutButton: View {
         Button("Logout") { isConfirming = true }
         .confirmationDialog("Are you that you want to logout",
                             isPresented: $isConfirming) {
-            Button(action: logout) {
-                Text("Confirm Logout")
+            Button("Confirm Logout", role: .destructive) {
+                logout()
             }
             Button("Cancel", role: .cancel) {}
         }
@@ -26,7 +26,7 @@ struct LogoutButton: View {
     private func logout() {
         Task {
             do {
-                try await app.currentUser?.logOut()
+                try await realmApp.currentUser?.logOut()
                 username = ""
             } catch {
                 print("Failed to logout: \(error.localizedDescription)")

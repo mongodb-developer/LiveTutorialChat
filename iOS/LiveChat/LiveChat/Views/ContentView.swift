@@ -19,7 +19,6 @@ struct ContentView: View {
                     ChatRoomsView(username: username)
                 }
             }
-            .navigationBarTitle(username, displayMode: .inline)
             .navigationBarItems(trailing: username != "" ? LogoutButton(username: $username) : nil) }
      }
 }

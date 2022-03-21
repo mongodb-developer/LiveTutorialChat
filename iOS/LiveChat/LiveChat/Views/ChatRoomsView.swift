@@ -22,14 +22,17 @@ struct ChatRoomsView: View {
                         Text(room)
                     }
                 } else {
-                    NavigationLink (
-                        destination: ChatsView(username: username, room: room)
-                            .environment(\.realmConfiguration, app.currentUser!.configuration(partitionValue: room))) {
-                        Text(room)
+                    if let realmUser = realmApp.currentUser {
+                        NavigationLink (
+                            destination: ChatsView(username: username, room: room)
+                                .environment(\.realmConfiguration, realmUser.configuration(partitionValue: room))) {
+                            Text(room)
+                        }
                     }
                 }
             }
         }
+        .navigationBarTitle("Rooms", displayMode: .inline)
     }
 }
 

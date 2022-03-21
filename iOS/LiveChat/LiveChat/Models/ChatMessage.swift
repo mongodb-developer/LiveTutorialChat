@@ -9,10 +9,10 @@ import Foundation
 import RealmSwift
 
 class ChatMessage: Object, ObjectKeyIdentifiable {
-    @Persisted(primaryKey: true) var _id = ObjectId.generate()
-    @Persisted var room = ""
-    @Persisted var author = ""
-    @Persisted var text = ""
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var room: String
+    @Persisted var author: String
+    @Persisted var text: String
     @Persisted var timestamp = Date()
 
     convenience init(author: String, text: String, room: String) {

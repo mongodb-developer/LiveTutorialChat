@@ -20,15 +20,13 @@ struct ChatsView: View {
     
     var body: some View {
         VStack {
-            ScrollView(.vertical) {
-                ForEach(chats) { chatMessage in
-                    HStack {
-                        if chatMessage.author == username { Spacer() }
-                        Text(chatMessage.text)
-                        if chatMessage.author != username { Spacer() }
-                    }
-                    .padding(4)
+            ForEach(chats) { chatMessage in
+                HStack {
+                    if chatMessage.author == username { Spacer() }
+                    Text(chatMessage.text)
+                    if chatMessage.author != username { Spacer() }
                 }
+                .padding(4)
             }
             Spacer()
             HStack {
@@ -40,6 +38,7 @@ struct ChatsView: View {
                     .onSubmit(send)
                     .submitLabel(.send)
                 Button(action: send) { Image(systemName: "paperplane.fill") }
+                    .disabled(message == "")
             }
         }
         .navigationBarTitle("\(room) messages", displayMode: .inline)
@@ -56,7 +55,7 @@ struct ChatsView: View {
 struct ChatsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ChatsView(username: "billy@fish.com", room: "Test room")
+            ChatsView(username: "billy@clusterdb.com", room: "Test room")
         }
     }
 }
