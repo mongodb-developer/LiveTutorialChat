@@ -17,20 +17,12 @@ struct LoginView: View {
     @State private var errorMessage = ""
     @State private var busy = false
     
-    @FocusState private var focussedField: Field?
-    
     var body: some View {
         ZStack {
             VStack(spacing: 16) {
                 Spacer()
                 TextField("email address", text: $email)
-                    .focused($focussedField, equals: .username)
-                    .submitLabel(.next)
-                    .onSubmit { focussedField = .password }
                 SecureField("password", text: $password)
-                    .focused($focussedField, equals: .password)
-                    .onSubmit(userAction)
-                    .submitLabel(.go)
                 Button(action: { newUser.toggle() }) {
                     HStack {
                         Image(systemName: newUser ? "checkmark.square" : "square")
@@ -38,7 +30,7 @@ struct LoginView: View {
                         Spacer()
                     }
                 }
-                Button(action: userAction) {
+                Button(action: login) {
                     Text(newUser ? "Register new user" : "Log in")
                 }
                 .buttonStyle(.borderedProminent)
@@ -53,14 +45,9 @@ struct LoginView: View {
                 ProgressView()
             }
         }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                focussedField = .username
-            }
-        }
     }
     
-    func userAction() {
+    func login() {
         busy = true
         errorMessage = ""
         Task {
@@ -77,12 +64,6 @@ struct LoginView: View {
             }
         }
     }
-    
-    enum Field: Hashable {
-        case username
-        case password
-    }
-
 }
 
 struct LoginView_Previews: PreviewProvider {

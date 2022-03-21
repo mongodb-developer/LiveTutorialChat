@@ -11,35 +11,20 @@ struct ChatRoomsView: View {
     let username: String
     var preview = false
     
-    let rooms = ["Atlas", "Realm", "Charts", "Search", "Server"]
+    let rooms = ["Java", "Kotlin", "Swift", "JavaScript", "Python"]
     
     var body: some View {
         List {
             ForEach(rooms, id: \.self ) { room  in
-                if preview {
+                if let realmUser = realmApp.currentUser {
                     NavigationLink (
-                        destination: ChatsView(username: username, room: room)) {
+                        destination: ChatsView(username: username, room: room)
+                            .environment(\.realmConfiguration, realmUser.configuration(partitionValue: room))) {
                         Text(room)
-                    }
-                } else {
-                    if let realmUser = realmApp.currentUser {
-                        NavigationLink (
-                            destination: ChatsView(username: username, room: room)
-                                .environment(\.realmConfiguration, realmUser.configuration(partitionValue: room))) {
-                            Text(room)
-                        }
                     }
                 }
             }
         }
         .navigationBarTitle("Rooms", displayMode: .inline)
-    }
-}
-
-struct ChatRoomsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            ChatRoomsView(username: "Freddy", preview: true)
-        }
     }
 }
